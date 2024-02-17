@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Arts of Africa, Oceania, and the Americas.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Arts of Africa, Oceania, and the Americas@2x.jpeg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Arts of Africa, Oceania, and the Americas@3x.jpeg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
