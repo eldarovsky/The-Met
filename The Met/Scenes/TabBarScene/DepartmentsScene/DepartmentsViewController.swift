@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol DepartmentsViewControllerProtocol: AnyObject {}
+
 final class DepartmentsViewController: UIViewController {
+    var presenter: DepartmentsPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
     }
 }
+
+extension DepartmentsViewController: DepartmentsViewControllerProtocol {}

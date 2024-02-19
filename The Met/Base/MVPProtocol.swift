@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol BaseAssembly {
+protocol BaseAssembler {
     func configure(viewController: UIViewController)
 }
 

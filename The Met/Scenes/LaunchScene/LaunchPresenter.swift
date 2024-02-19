@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ILaunchPresenter {
+protocol LaunchPresenterProtocol {
     func fetchObjects()
     func startProgressViewAnimation()
     func stopProgressViewAnimation()
@@ -16,21 +16,20 @@ protocol ILaunchPresenter {
 
 final class LaunchPresenter {
     
-    weak var view: ILaunchViewController?
-    let router: ILaunchRouter
-    
-    init(router: ILaunchRouter) {
+    weak var view: LaunchViewControllerProtocol?
+    let router: LaunchRouterProtocol
+
+    init(router: LaunchRouterProtocol) {
         self.router = router
     }
     
     // MARK: - Private properties
     private let networkManager = NetworkManager.shared
-    private var imageIDs: [Int]?
     private var progressTimer: Timer?
     private let progress = Progress(totalUnitCount: 5)
 }
 
-extension LaunchPresenter: ILaunchPresenter {
+extension LaunchPresenter: LaunchPresenterProtocol {
     
     // MARK: - Start Progress Animation
     func startProgressViewAnimation() {
@@ -74,8 +73,7 @@ extension LaunchPresenter: ILaunchPresenter {
             case .success(let objects):
                 DispatchQueue.main.async {
                     self?.view?.updateProgressView(progress: 1)
-                    self?.imageIDs = objects.objectIDs
-                    self?.router.routeTo(target: LaunchRouter.Target.tabBar)
+                    self?.router.routeTo(target: LaunchRouter.Target.tabBar(imageIDs: objects.objectIDs))
                     self?.stopProgressViewAnimation()
                 }
 
@@ -88,7 +86,7 @@ extension LaunchPresenter: ILaunchPresenter {
                     self.networkManager.alertAction(fromVC: LaunchViewController(), buttonTitle: "RETRY") {
                         self.fetchObjects()
                     }
-                    
+
                     self.resetProgress()
                 }
             }

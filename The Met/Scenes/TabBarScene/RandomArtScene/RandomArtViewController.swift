@@ -7,12 +7,15 @@
 
 import UIKit
 
-protocol IRandomArtViewController: AnyObject {
-
+// MARK: - RandomArtViewControllerProtocol
+protocol RandomArtViewControllerProtocol: AnyObject {
+    func render(randomArtModel: RandomArtModel)
+    func startAnimating()
+    func stopAnimating()
 }
 
 final class RandomArtViewController: UIViewController {
-    var presenter: IRandomArtPresenter?
+    var presenter: RandomArtPresenterProtocol?
 
     // MARK: - UI elements
     private let canvas = UIImageView()
@@ -23,93 +26,26 @@ final class RandomArtViewController: UIViewController {
     private var nextButton = CustomButton(
         title: "Next",
         titleNormalColor: .white,
-        titleHighlightColor: ColorPalette.customGreyLight,
+        titleHighlightColor: .customGreyLight,
         font: .systemFont(ofSize: 21),
         backgroundColor: .clear,
         width: 150,
         height: 40
     )
 
-    // MARK: - Private properties
-    private let networkManager = NetworkManager.shared
-    var imageIDs: [Int]? = []
-
     // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-                setupView()
-        //        fetchObject()
-        art.backgroundColor = .green
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        setupView()
+        addActions()
+
+        presenter?.fetchObject()
     }
 
-    // MARK: - Private methods
     @objc
     private func getArt() {
-        fetchObject()
-    }
-
-    //    @objc
-    //    private func artTapped(_ sender: UITapGestureRecognizer) {
-    //        guard let tappedImage = sender.view as? UIImageView else { return }
-    //
-    //        performSegue(withIdentifier: "fullsizeArt", sender: tappedImage.image)
-    //    }
-
-    private func getImageURL() -> String {
-        let objectsURL = Link.baseURL
-        let imageURL = String(imageIDs?.randomElement() ?? 0)
-        return "\(objectsURL)/\(imageURL)"
-    }
-
-    func fetchObject() {
-        activityIndicator.startAnimating()
-
-        let url = getImageURL()
-
-        networkManager.fetchObjects(Object.self, from: url) { [weak self] result in
-            switch result {
-            case .success(let data):
-                let access = data.isPublicDomain
-
-                if access {
-                    self?.networkManager.fetchImage(from: data.primaryImageSmall) { [weak self] result in
-                        switch result {
-                        case .success(let imageData):
-                            DispatchQueue.main.async {
-                                self?.art.image = UIImage(data: imageData)
-                                self?.descriptionLabel.text = data.description
-                                self?.activityIndicator.stopAnimating()
-                            }
-                        case .failure(let error):
-                            print(error.localizedDescription)
-
-                            //                            DispatchQueue.main.async {
-                            //                                guard let self = self else { return }
-                            //                                self.networkManager.alertAction(fromVC: self) {
-                            //                                    self.activityIndicator.stopAnimating()
-                            //                                }
-                            //                            }
-                        }
-                    }
-                } else {
-                    self?.descriptionLabel.text = """
-                                NOT IN PUBLIC DOMAIN:
-                                \(data.artistDisplayName) - \(data.title)
-                                """
-
-                    self?.fetchObject()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-
-                //                DispatchQueue.main.async {
-                //                    guard let self = self else { return }
-                //                    self.networkManager.alertAction(fromVC: self) {
-                //                        self.activityIndicator.stopAnimating()
-                //                    }
-                //                }
-            }
-        }
+        presenter?.fetchObject()
     }
 }
 
@@ -118,6 +54,10 @@ private extension RandomArtViewController {
         setupUI()
         addViews()
         setupLayout()
+    }
+
+    func addActions() {
+        nextButton.addTarget(self, action: #selector(getArt), for: .touchUpInside)
     }
 }
 
@@ -129,28 +69,19 @@ extension RandomArtViewController {
         setupActivityIndicator()
         setupPlacard()
         setupDescription()
+        setupButton()
     }
 }
 
 extension RandomArtViewController {
     func setupScreen() {
-        view.backgroundColor = ColorPalette.background
+        view.backgroundColor = .background
         art.isUserInteractionEnabled = true
-//        navigationItem.backBarButtonItem?.isEnabled = false
-        navigationItem.backBarButtonItem?.isHidden = true
-
-
-
-//        navigationItem.hidesBackButton = true
-
-//        guard let navigationController = navigationController else { return }
-////        navigationController.isNavigationBarHidden = true
-//        navigationController.setNavigationBarHidden(true, animated: false)
     }
 
     func setupCanvas() {
         canvas.layer.masksToBounds = false
-        canvas.layer.shadowColor = ColorPalette.shadow.cgColor
+        canvas.layer.shadowColor = .shadow.cgColor
         canvas.layer.shadowRadius = 4
         canvas.layer.shadowOpacity = 1
         canvas.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -159,7 +90,6 @@ extension RandomArtViewController {
         canvas.image = image
 
         canvas.contentMode = .scaleToFill
-
     }
 
     func setupArt() {
@@ -189,21 +119,21 @@ extension RandomArtViewController {
     func setupDescription() {
         descriptionLabel.text = ""
         descriptionLabel.font = UIFont.systemFont(ofSize: 17)
-        descriptionLabel.textColor = ColorPalette.customGrey
+        descriptionLabel.textColor = .customGrey
         descriptionLabel.contentMode = .left
+        descriptionLabel.minimumScaleFactor = 0.5
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.adjustsFontSizeToFitWidth = true 
     }
 
     func addViews() {
         [canvas, art, activityIndicator, placard, descriptionLabel, nextButton].forEach { subview in
             view.addSubview(subview)
+            subview.translatesAutoresizingMaskIntoConstraints = false
         }
     }
 
     func setupLayout() {
-        [canvas, art, activityIndicator, placard, descriptionLabel, nextButton].forEach { subview in
-            subview.translatesAutoresizingMaskIntoConstraints = false
-        }
-
         NSLayoutConstraint.activate([
             canvas.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55),
             canvas.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -233,10 +163,26 @@ extension RandomArtViewController {
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
+
+    func setupButton() {
+        nextButton.titleLabel?.font = UIFont.systemFont(ofSize: 21)
+
+        let normalColor = UIColor.customGrey
+        nextButton.setTitleColor(normalColor, for: .normal)
+    }
 }
 
+extension RandomArtViewController: RandomArtViewControllerProtocol {
+    func render(randomArtModel: RandomArtModel) {
+        art.image = UIImage(data: randomArtModel.imageData)
+        descriptionLabel.text = randomArtModel.description
+    }
 
+    func startAnimating() {
+        activityIndicator.startAnimating()
+    }
 
-extension RandomArtViewController: IRandomArtViewController {
-
+    func stopAnimating() {
+        activityIndicator.stopAnimating()
+    }
 }

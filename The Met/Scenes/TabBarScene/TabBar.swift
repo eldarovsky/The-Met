@@ -7,36 +7,6 @@
 
 import UIKit
 
-//final class TabBar {
-//    private let navigationController: UINavigationController
-//
-//    init(navigationController: UINavigationController) {
-//        self.navigationController = navigationController
-//    }
-//}
-//
-//extension TabBar: BaseAssembly {
-//    func configure(viewController: UIViewController) {
-//        guard let tabBarController = viewController as? ITabBarController else { return }
-//
-//        // Добавьте настройку ваших сцен для таббара
-//        let scene2VC = Scene2ViewController()
-//        let scene3VC = Scene3ViewController()
-//
-//        let navController2 = UINavigationController(rootViewController: scene2VC)
-//        let navController3 = UINavigationController(rootViewController: scene3VC)
-//
-//        scene2VC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-//        scene3VC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 1)
-//
-//        tabBarController.viewControllers = [navController2, navController3]
-//    }
-//}
-
-import UIKit
-
-
-
 // MARK: - TabBarController
 final class TabBar: UITabBarController {
 
@@ -84,7 +54,7 @@ private extension TabBar {
     func setupTabBar() {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
-        tabBarAppearance.backgroundColor = UIColor(red: 159/255, green: 166/255, blue: 151/255, alpha: 1)
+        tabBarAppearance.backgroundColor = .tabBarBackground
 
         tabBar.items?[0].image = UIImage(systemName: "photo")
         tabBar.items?[1].image = UIImage(systemName: "photo.stack")

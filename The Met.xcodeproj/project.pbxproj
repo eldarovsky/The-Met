@@ -27,6 +27,9 @@
 		B8B644E62B43120800EABD97 /* RandomArtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B644E52B43120800EABD97 /* RandomArtViewController.swift */; };
 		B8B644E82B43121700EABD97 /* RandomArtPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B644E72B43121700EABD97 /* RandomArtPresenter.swift */; };
 		B8B644EA2B43121F00EABD97 /* RandomArtRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B644E92B43121F00EABD97 /* RandomArtRouter.swift */; };
+		B8B841E62B81F9B7006A5317 /* DepartmentsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B841E52B81F9B7006A5317 /* DepartmentsAssembler.swift */; };
+		B8B841E82B81F9D1006A5317 /* DepartmentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B841E72B81F9D1006A5317 /* DepartmentsPresenter.swift */; };
+		B8B841EA2B81F9DE006A5317 /* DepartmentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B841E92B81F9DE006A5317 /* DepartmentsRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		B8B644E52B43120800EABD97 /* RandomArtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomArtViewController.swift; sourceTree = "<group>"; };
 		B8B644E72B43121700EABD97 /* RandomArtPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomArtPresenter.swift; sourceTree = "<group>"; };
 		B8B644E92B43121F00EABD97 /* RandomArtRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomArtRouter.swift; sourceTree = "<group>"; };
+		B8B841E52B81F9B7006A5317 /* DepartmentsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsAssembler.swift; sourceTree = "<group>"; };
+		B8B841E72B81F9D1006A5317 /* DepartmentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsPresenter.swift; sourceTree = "<group>"; };
+		B8B841E92B81F9DE006A5317 /* DepartmentsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +84,10 @@
 		B882A82B2B45C9680073078B /* DepartmentsScene */ = {
 			isa = PBXGroup;
 			children = (
+				B8B841E52B81F9B7006A5317 /* DepartmentsAssembler.swift */,
 				B882A8302B45CCB30073078B /* DepartmentsViewController.swift */,
+				B8B841E72B81F9D1006A5317 /* DepartmentsPresenter.swift */,
+				B8B841E92B81F9DE006A5317 /* DepartmentsRouter.swift */,
 			);
 			path = DepartmentsScene;
 			sourceTree = "<group>";
@@ -106,7 +115,7 @@
 				B8B644C62B428F4E00EABD97 /* Resources */,
 				B8B644D82B42EF5700EABD97 /* Base */,
 				B8B644C82B42982600EABD97 /* CustomViews */,
-				B8B644D72B42EF2400EABD97 /* BL */,
+				B8B644D72B42EF2400EABD97 /* Business Logic */,
 				B8B644C92B42982B00EABD97 /* Scenes */,
 			);
 			path = "The Met";
@@ -157,14 +166,14 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		B8B644D72B42EF2400EABD97 /* BL */ = {
+		B8B644D72B42EF2400EABD97 /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
 				B8B644C72B42981000EABD97 /* Models */,
 				B8B644CB2B429C7E00EABD97 /* NetworkManager.swift */,
 				B8B644CD2B429CC900EABD97 /* ImageSaver.swift */,
 			);
-			path = BL;
+			path = "Business Logic";
 			sourceTree = "<group>";
 		};
 		B8B644D82B42EF5700EABD97 /* Base */ = {
@@ -272,17 +281,20 @@
 				B8B644D42B429F3800EABD97 /* ColorPalette.swift in Sources */,
 				B882A8292B45A15C0073078B /* TabBar.swift in Sources */,
 				B8B644DA2B42EF7E00EABD97 /* MVPProtocol.swift in Sources */,
+				B8B841EA2B81F9DE006A5317 /* DepartmentsRouter.swift in Sources */,
 				B8B644B62B428F2100EABD97 /* LaunchViewController.swift in Sources */,
 				B8B644CE2B429CC900EABD97 /* ImageSaver.swift in Sources */,
 				B8B644E82B43121700EABD97 /* RandomArtPresenter.swift in Sources */,
 				B882A82E2B45C9C10073078B /* LaunchPresenter.swift in Sources */,
 				B8B644D02B429CF500EABD97 /* Models.swift in Sources */,
 				B8B644E62B43120800EABD97 /* RandomArtViewController.swift in Sources */,
+				B8B841E82B81F9D1006A5317 /* DepartmentsPresenter.swift in Sources */,
 				B8B644EA2B43121F00EABD97 /* RandomArtRouter.swift in Sources */,
 				B8B644D22B429EF800EABD97 /* CustomButton.swift in Sources */,
 				B8B644DE2B42F04B00EABD97 /* LaunchAssembler.swift in Sources */,
 				B8B644B22B428F2100EABD97 /* AppDelegate.swift in Sources */,
 				B882A82F2B45C9C10073078B /* LaunchRouter.swift in Sources */,
+				B8B841E62B81F9B7006A5317 /* DepartmentsAssembler.swift in Sources */,
 				B8B644E42B4311F200EABD97 /* RandomArtAssembler.swift in Sources */,
 				B8B644B42B428F2100EABD97 /* SceneDelegate.swift in Sources */,
 			);

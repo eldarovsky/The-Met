@@ -15,7 +15,7 @@ final class LaunchAssembler {
     }
 }
 
-extension LaunchAssembler: BaseAssembly {
+extension LaunchAssembler: BaseAssembler {
     func configure(viewController: UIViewController) {
         let router = LaunchRouter(navigationController: navigationController)
         let presenter = LaunchPresenter(router: router)

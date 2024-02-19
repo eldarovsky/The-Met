@@ -1,15 +1,15 @@
 //
-//  RandomArtRouter.swift
+//  DepartmentsRouter.swift
 //  The Met
 //
-//  Created by Эльдар Абдуллин on 01.01.2024.
+//  Created by Эльдар Абдуллин on 18.02.2024.
 //
 
 import UIKit
 
-protocol RandomArtRouterProtocol {}
+protocol DepartmentsRouterProtocol {}
 
-final class RandomArtRouter {
+final class DepartmentsRouter {
     private let navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -17,4 +17,4 @@ final class RandomArtRouter {
     }
 }
 
-extension RandomArtRouter: RandomArtRouterProtocol {}
+extension DepartmentsRouter: DepartmentsRouterProtocol {}

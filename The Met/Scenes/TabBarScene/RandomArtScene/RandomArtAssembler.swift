@@ -9,16 +9,18 @@ import UIKit
 
 final class RandomArtAssembler {
     private let navigationController: UINavigationController
+    private let imageIDs: [Int]
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, imageIDs: [Int]) {
         self.navigationController = navigationController
+        self.imageIDs = imageIDs
     }
 }
 
-extension RandomArtAssembler: BaseAssembly {
+extension RandomArtAssembler: BaseAssembler {
     func configure(viewController: UIViewController) {
         let router = RandomArtRouter(navigationController: navigationController)
-        let presenter = RandomArtPresenter(router: router)
+        let presenter = RandomArtPresenter(router: router, imageIDs: imageIDs)
         guard let randomArtVC = viewController as? RandomArtViewController else { return }
 
         presenter.view = randomArtVC

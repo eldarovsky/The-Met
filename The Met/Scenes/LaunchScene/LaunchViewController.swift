@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ILaunchViewController: AnyObject {
+protocol LaunchViewControllerProtocol: AnyObject {
     func updateProgressView(progress: Float)
     func animateProgressView(withDuration: TimeInterval, delay: TimeInterval, progressFloat: Float)
 //    func performTransition(to viewController: UIViewController)
@@ -16,7 +16,7 @@ protocol ILaunchViewController: AnyObject {
 // MARK: - LaunchViewController
 final class LaunchViewController: UIViewController {
 
-    var presenter: ILaunchPresenter?
+    var presenter: LaunchPresenterProtocol?
 
     // MARK: - UI elements
     private let logo = UIImageView(frame: CGRect(x: 0, y: 0, width: 151, height: 150))
@@ -43,7 +43,7 @@ private extension LaunchViewController {
     func setupUI() {
         title = "The Metropolitan Museum of Art"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        view.backgroundColor = ColorPalette.launchScreen
+        view.backgroundColor = .launchScreen
 
         guard let image = UIImage(named: "logo") else { return }
         logo.image = image
@@ -53,7 +53,7 @@ private extension LaunchViewController {
         progressView.clipsToBounds = true
         progressView.layer.cornerRadius = 4
         progressView.progressTintColor = .white
-        progressView.trackTintColor = ColorPalette.customGrey
+        progressView.trackTintColor = .customGrey
     }
 
     func addViews() {
@@ -79,7 +79,7 @@ private extension LaunchViewController {
     }
 }
 
-extension LaunchViewController: ILaunchViewController {
+extension LaunchViewController: LaunchViewControllerProtocol {
     
     func updateProgressView(progress: Float) {
         progressView.setProgress(progress, animated: true)
