@@ -2,22 +2,14 @@
   "images" : [
     {
       "filename" : "The Robert Lehman Collection.jpeg",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "The Robert Lehman Collection@2x.jpeg",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "The Robert Lehman Collection@3x.jpeg",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }

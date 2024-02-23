@@ -7,9 +7,13 @@
 
 import UIKit
 
-protocol DepartmentsRouterProtocol {}
+protocol DepartmentsRouterProtocol: BaseRouting {}
 
 final class DepartmentsRouter {
+    enum Target {
+        case randomArt(imageIDs: [Int])
+    }
+
     private let navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -17,4 +21,18 @@ final class DepartmentsRouter {
     }
 }
 
-extension DepartmentsRouter: DepartmentsRouterProtocol {}
+extension DepartmentsRouter: DepartmentsRouterProtocol {
+    func routeTo(target: Any) {
+        guard let target = target as? DepartmentsRouter.Target else { return }
+
+        switch target {
+        case .randomArt (let imageIDs):
+            let randomArtVC = RandomArtViewController()
+            let randomArtNavigationController = UINavigationController(rootViewController: randomArtVC)
+            let randomArtAssembler = RandomArtAssembler(navigationController: randomArtNavigationController, imageIDs: imageIDs)
+            randomArtAssembler.configure(viewController: randomArtVC)
+
+            navigationController.pushViewController(randomArtVC, animated: true)
+        }
+    }
+}

@@ -23,9 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let launchAssembler = LaunchAssembler(navigationController: navigationController)
         launchAssembler.configure(viewController: launchVC)
 
-//        let tabBar = UITabBarController()
-//        let randomArtScreen = RandomArtViewController()
-
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         window?.backgroundColor = .white

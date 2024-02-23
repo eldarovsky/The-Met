@@ -61,9 +61,6 @@ extension RandomArtPresenter: RandomArtPresenterProtocol {
                     self?.networkManager.fetchImage(from: data.primaryImageSmall) { [weak self] result in
                         switch result {
                         case .success(let imageData):
-//                                self?.art.image = UIImage(data: imageData)
-//                                self?.descriptionLabel.text = data.description
-
                             let randomArtModel = RandomArtModel(imageData: imageData, description: data.description)
                             self?.view?.render(randomArtModel: randomArtModel)
 
@@ -82,10 +79,12 @@ extension RandomArtPresenter: RandomArtPresenterProtocol {
                         }
                     }
                 } else {
-//                    self?.descriptionLabel.text = """
-//                                NOT IN PUBLIC DOMAIN:
-//                                \(data.artistDisplayName) - \(data.title)
-//                                """
+                    self?.view?.showFetchingStatus(text:
+                          """
+                            NOT IN PUBLIC DOMAIN:
+                            \(data.artistDisplayName) - \(data.title)
+                            """
+                    )
 
                     self?.fetchObject()
                 }

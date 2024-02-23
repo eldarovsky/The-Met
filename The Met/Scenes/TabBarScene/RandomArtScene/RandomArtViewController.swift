@@ -10,6 +10,7 @@ import UIKit
 // MARK: - RandomArtViewControllerProtocol
 protocol RandomArtViewControllerProtocol: AnyObject {
     func render(randomArtModel: RandomArtModel)
+    func showFetchingStatus(text: String)
     func startAnimating()
     func stopAnimating()
 }
@@ -176,6 +177,10 @@ extension RandomArtViewController: RandomArtViewControllerProtocol {
     func render(randomArtModel: RandomArtModel) {
         art.image = UIImage(data: randomArtModel.imageData)
         descriptionLabel.text = randomArtModel.description
+    }
+
+    func showFetchingStatus(text: String) {
+        descriptionLabel.text = text
     }
 
     func startAnimating() {
