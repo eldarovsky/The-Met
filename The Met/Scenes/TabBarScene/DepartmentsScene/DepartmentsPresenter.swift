@@ -8,9 +8,9 @@
 import Foundation
 
 protocol DepartmentsPresenterProtocol {
-    func fetchDepartmentsID()
+    func getDepartmentsID()
     func getDepartmentsURL(fromDepartment department: Department)
-    func fetchObjectsIDs()
+    func getObjectsIDs(forCell cell: DepartmentsViewCell)
     //    func getParcingStatus() -> Bool
     //    func toggleParcingStatus()
 }
@@ -31,11 +31,10 @@ final class DepartmentsPresenter {
 }
 
 extension DepartmentsPresenter: DepartmentsPresenterProtocol {
-    func fetchDepartmentsID() {
+    func getDepartmentsID() {
         networkManager.fetchObjects(Departments.self, from: Link.departmentsURL) { [weak self] result in
             switch result {
             case .success(let departments):
-//                let departments = departments.departments
                 self?.departments = departments.departments
                 self?.view?.render(departments: departments.departments)
             case .failure(let error):
@@ -53,12 +52,13 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
         self.departmentURL = Link.departmentURL + String(department.departmentId)
     }
 
-    func fetchObjectsIDs() {
+    func getObjectsIDs(forCell cell: DepartmentsViewCell) {
         networkManager.fetchObjects(Objects.self, from: departmentURL) { [weak self] result in
             switch result {
             case .success(let objects):
                 DispatchQueue.main.async {
                     self?.router.routeTo(target: DepartmentsRouter.Target.randomArt(imageIDs: objects.objectIDs))
+                    cell.stopAnimating()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -68,7 +68,7 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
 
                     self.networkManager.alertAction() {
                         self.isParsing = false
-//                        cell.activityIndicator.stopAnimating()
+                         cell.stopAnimating()
                     }
                 }
             }
@@ -78,7 +78,7 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
     //    func getParcingStatus() -> Bool {
     //        isParsing
     //    }
-    
+
     //    func toggleParcingStatus() {
     //        isParsing.toggle()
     //    }

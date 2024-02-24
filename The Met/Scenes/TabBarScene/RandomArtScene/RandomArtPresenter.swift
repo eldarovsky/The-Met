@@ -79,7 +79,7 @@ extension RandomArtPresenter: RandomArtPresenterProtocol {
                         }
                     }
                 } else {
-                    self?.view?.showFetchingStatus(text:
+                    self?.view?.showDescription(text:
                           """
                             NOT IN PUBLIC DOMAIN:
                             \(data.artistDisplayName) - \(data.title)

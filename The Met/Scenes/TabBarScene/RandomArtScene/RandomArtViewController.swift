@@ -10,7 +10,7 @@ import UIKit
 // MARK: - RandomArtViewControllerProtocol
 protocol RandomArtViewControllerProtocol: AnyObject {
     func render(randomArtModel: RandomArtModel)
-    func showFetchingStatus(text: String)
+    func showDescription(text: String)
     func startAnimating()
     func stopAnimating()
 }
@@ -42,11 +42,19 @@ final class RandomArtViewController: UIViewController {
         addActions()
 
         presenter?.fetchObject()
+
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationItem.backButtonTitle = "Back"
     }
 
     @objc
     private func getArt() {
         presenter?.fetchObject()
+    }
+
+    @objc
+    private func goBack() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -120,11 +128,11 @@ extension RandomArtViewController {
     func setupDescription() {
         descriptionLabel.text = ""
         descriptionLabel.font = UIFont.systemFont(ofSize: 17)
-        descriptionLabel.textColor = .customGrey
-        descriptionLabel.contentMode = .left
         descriptionLabel.minimumScaleFactor = 0.5
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.adjustsFontSizeToFitWidth = true 
+        descriptionLabel.textColor = .customGrey
+        descriptionLabel.textAlignment = .left
+        descriptionLabel.adjustsFontSizeToFitWidth = true
     }
 
     func addViews() {
@@ -136,10 +144,10 @@ extension RandomArtViewController {
 
     func setupLayout() {
         NSLayoutConstraint.activate([
-            canvas.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55),
+            canvas.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             canvas.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             canvas.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            canvas.widthAnchor.constraint(equalTo: canvas.heightAnchor, multiplier: 191/232, constant: 0),
+            canvas.widthAnchor.constraint(equalTo: canvas.heightAnchor, multiplier: 191/232),
 
             art.topAnchor.constraint(equalTo: canvas.topAnchor, constant: 48),
             art.leadingAnchor.constraint(equalTo: canvas.leadingAnchor, constant: 48),
@@ -157,7 +165,7 @@ extension RandomArtViewController {
             descriptionLabel.topAnchor.constraint(equalTo: placard.topAnchor, constant: 8),
             descriptionLabel.leadingAnchor.constraint(equalTo: placard.leadingAnchor, constant: 8),
             descriptionLabel.trailingAnchor.constraint(equalTo: placard.trailingAnchor, constant: -8),
-            descriptionLabel.bottomAnchor.constraint(equalTo: placard.bottomAnchor, constant: -8),
+            descriptionLabel.heightAnchor.constraint(lessThanOrEqualTo: placard.heightAnchor, constant: -16),
 
             nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nextButton.widthAnchor.constraint(equalTo: nextButton.heightAnchor, multiplier: 15/4, constant: 0),
@@ -179,7 +187,7 @@ extension RandomArtViewController: RandomArtViewControllerProtocol {
         descriptionLabel.text = randomArtModel.description
     }
 
-    func showFetchingStatus(text: String) {
+    func showDescription(text: String) {
         descriptionLabel.text = text
     }
 

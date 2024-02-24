@@ -10,6 +10,7 @@ import UIKit
 protocol DepartmentsViewCellProtocol {
     func configure(from department: Department)
     func startAnimating()
+    func stopAnimating()
     func showBlankCell()
 }
 
@@ -97,6 +98,10 @@ extension DepartmentsViewCell: DepartmentsViewCellProtocol {
 
     func startAnimating() {
         activityIndicator.startAnimating()
+    }
+
+    func stopAnimating() {
+        activityIndicator.stopAnimating()
     }
 
     func showBlankCell() {

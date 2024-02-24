@@ -19,7 +19,7 @@ final class DepartmentsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        presenter?.fetchDepartmentsID()
+        presenter?.getDepartmentsID()
     }
 }
 
@@ -40,7 +40,6 @@ private extension DepartmentsViewController {
 private extension DepartmentsViewController {
     func setupScreen() {
         view.backgroundColor = .background
-        title = "Departments"
     }
 
     func setupNavigationBar() {
@@ -57,6 +56,10 @@ private extension DepartmentsViewController {
         guard let navigationBar = navigationController?.navigationBar else { return }
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+
+        title = "Departments"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor = .customGrey
     }
 
     func setupTableView() {
@@ -104,7 +107,7 @@ extension DepartmentsViewController {
         let department = departments[indexPath.row]
         presenter?.getDepartmentsURL(fromDepartment: department)
 
-        presenter?.fetchObjectsIDs()
+        presenter?.getObjectsIDs(forCell: cell)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

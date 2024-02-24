@@ -16,36 +16,8 @@ final class TabBar: UITabBarController {
     // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-//        fetchDepartmentsIDs()
         setupTabBar()
     }
-
-    // MARK: - Private methods
-//    private func fetchDepartmentsIDs() {
-//        networkManager.fetchObjects(Departments.self, from: Link.departmentsURL) { [weak self] result in
-//            switch result {
-//            case .success(let departments):
-//                guard let viewControllers = self?.viewControllers else { return }
-//
-//                viewControllers.forEach { viewController in
-//                    guard let navigationVC = viewController as? DepartmentsNavigationController else { return }
-//
-//                    DispatchQueue.main.async {
-//                        if let departmentsVC = navigationVC.topViewController as? DepartmentsViewController {
-//                            departmentsVC.departments = departments
-//                        }
-//                    }
-//                }
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//
-//                DispatchQueue.main.async {
-//                    guard let self = self else { return }
-//                    self.networkManager.alertAction(fromVC: self)
-//                }
-//            }
-//        }
-//    }
 }
 
 // MARK: - Setup UI of tab bar

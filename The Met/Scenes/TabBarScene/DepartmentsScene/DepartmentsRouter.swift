@@ -28,10 +28,10 @@ extension DepartmentsRouter: DepartmentsRouterProtocol {
         switch target {
         case .randomArt (let imageIDs):
             let randomArtVC = RandomArtViewController()
-            let randomArtNavigationController = UINavigationController(rootViewController: randomArtVC)
-            let randomArtAssembler = RandomArtAssembler(navigationController: randomArtNavigationController, imageIDs: imageIDs)
+            let randomArtAssembler = RandomArtAssembler(navigationController: navigationController, imageIDs: imageIDs)
             randomArtAssembler.configure(viewController: randomArtVC)
 
+            randomArtVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
             navigationController.pushViewController(randomArtVC, animated: true)
         }
     }
