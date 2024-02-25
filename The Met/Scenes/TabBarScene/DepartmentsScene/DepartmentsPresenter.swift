@@ -11,8 +11,7 @@ protocol DepartmentsPresenterProtocol {
     func getDepartmentsID()
     func getDepartmentsURL(fromDepartment department: Department)
     func getObjectsIDs(forCell cell: DepartmentsViewCell)
-    //    func getParcingStatus() -> Bool
-    //    func toggleParcingStatus()
+    func getParsingStatus() -> Bool
 }
 
 final class DepartmentsPresenter {
@@ -53,12 +52,16 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
     }
 
     func getObjectsIDs(forCell cell: DepartmentsViewCell) {
+        guard !isParsing else { return }
+        isParsing = true
+
         networkManager.fetchObjects(Objects.self, from: departmentURL) { [weak self] result in
             switch result {
             case .success(let objects):
                 DispatchQueue.main.async {
                     self?.router.routeTo(target: DepartmentsRouter.Target.randomArt(imageIDs: objects.objectIDs))
                     cell.stopAnimating()
+                    self?.isParsing = false
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -67,19 +70,16 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
                     guard let self = self else { return }
 
                     self.networkManager.alertAction() {
+                        cell.stopAnimating()
                         self.isParsing = false
-                         cell.stopAnimating()
                     }
                 }
             }
         }
     }
 
-    //    func getParcingStatus() -> Bool {
-    //        isParsing
-    //    }
-
-    //    func toggleParcingStatus() {
-    //        isParsing.toggle()
-    //    }
+    func getParsingStatus() -> Bool {
+        print("Current status: \(isParsing)")
+        return isParsing
+    }
 }

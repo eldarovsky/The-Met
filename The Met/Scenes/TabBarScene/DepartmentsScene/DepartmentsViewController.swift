@@ -98,9 +98,6 @@ extension DepartmentsViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-//        guard let parcingStatus = presenter?.getParcingStatus() else { return }
-//        presenter?.toggleParcingStatus()
-
         guard let cell = tableView.cellForRow(at: indexPath) as? DepartmentsViewCell else { return }
         cell.startAnimating()
 
