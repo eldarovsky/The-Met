@@ -26,7 +26,7 @@ private extension TabBar {
     func setupTabBar() {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
-        tabBarAppearance.backgroundColor = .tabBarBackground
+        tabBarAppearance.backgroundColor = .backgroundTabBar
 
         tabBar.items?[0].image = UIImage(systemName: "photo")
         tabBar.items?[1].image = UIImage(systemName: "photo.stack")

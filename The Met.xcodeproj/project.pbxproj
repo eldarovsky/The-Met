@@ -31,6 +31,9 @@
 		B8B841E62B81F9B7006A5317 /* DepartmentsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B841E52B81F9B7006A5317 /* DepartmentsAssembler.swift */; };
 		B8B841E82B81F9D1006A5317 /* DepartmentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B841E72B81F9D1006A5317 /* DepartmentsPresenter.swift */; };
 		B8B841EA2B81F9DE006A5317 /* DepartmentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B841E92B81F9DE006A5317 /* DepartmentsRouter.swift */; };
+		B8C99A3A2B8B162900A578FB /* ZoomSceneAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C99A392B8B162900A578FB /* ZoomSceneAssembler.swift */; };
+		B8C99A3C2B8B163F00A578FB /* ZoomSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C99A3B2B8B163F00A578FB /* ZoomSceneViewController.swift */; };
+		B8C99A3E2B8B165000A578FB /* ZoomScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C99A3D2B8B165000A578FB /* ZoomScenePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		B8B841E52B81F9B7006A5317 /* DepartmentsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsAssembler.swift; sourceTree = "<group>"; };
 		B8B841E72B81F9D1006A5317 /* DepartmentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsPresenter.swift; sourceTree = "<group>"; };
 		B8B841E92B81F9DE006A5317 /* DepartmentsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsRouter.swift; sourceTree = "<group>"; };
+		B8C99A392B8B162900A578FB /* ZoomSceneAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomSceneAssembler.swift; sourceTree = "<group>"; };
+		B8C99A3B2B8B163F00A578FB /* ZoomSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomSceneViewController.swift; sourceTree = "<group>"; };
+		B8C99A3D2B8B165000A578FB /* ZoomScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomScenePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +87,15 @@
 			path = DepartmentsViewCell;
 			sourceTree = "<group>";
 		};
-		B882A8222B45A0CD0073078B /* TabBarScene */ = {
+		B882A8222B45A0CD0073078B /* TabBarScenes */ = {
 			isa = PBXGroup;
 			children = (
 				B882A8252B45A15C0073078B /* TabBar.swift */,
 				B8B644DC2B42F01700EABD97 /* RandomArtScene */,
 				B882A82B2B45C9680073078B /* DepartmentsScene */,
+				B8C99A382B8B15A600A578FB /* ZoomScene */,
 			);
-			path = TabBarScene;
+			path = TabBarScenes;
 			sourceTree = "<group>";
 		};
 		B882A82B2B45C9680073078B /* DepartmentsScene */ = {
@@ -172,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				B8B644DB2B42EFFB00EABD97 /* LaunchScene */,
-				B882A8222B45A0CD0073078B /* TabBarScene */,
+				B882A8222B45A0CD0073078B /* TabBarScenes */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -215,6 +222,16 @@
 				B8B644E92B43121F00EABD97 /* RandomArtRouter.swift */,
 			);
 			path = RandomArtScene;
+			sourceTree = "<group>";
+		};
+		B8C99A382B8B15A600A578FB /* ZoomScene */ = {
+			isa = PBXGroup;
+			children = (
+				B8C99A392B8B162900A578FB /* ZoomSceneAssembler.swift */,
+				B8C99A3B2B8B163F00A578FB /* ZoomSceneViewController.swift */,
+				B8C99A3D2B8B165000A578FB /* ZoomScenePresenter.swift */,
+			);
+			path = ZoomScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +313,7 @@
 				B8B841EA2B81F9DE006A5317 /* DepartmentsRouter.swift in Sources */,
 				B8B644B62B428F2100EABD97 /* LaunchViewController.swift in Sources */,
 				B8B644CE2B429CC900EABD97 /* ImageSaver.swift in Sources */,
+				B8C99A3A2B8B162900A578FB /* ZoomSceneAssembler.swift in Sources */,
 				B8B644E82B43121700EABD97 /* RandomArtPresenter.swift in Sources */,
 				B882A82E2B45C9C10073078B /* LaunchPresenter.swift in Sources */,
 				B8B644D02B429CF500EABD97 /* Models.swift in Sources */,
@@ -304,8 +322,10 @@
 				B8B644EA2B43121F00EABD97 /* RandomArtRouter.swift in Sources */,
 				B8B644D22B429EF800EABD97 /* CustomButton.swift in Sources */,
 				B8B644DE2B42F04B00EABD97 /* LaunchAssembler.swift in Sources */,
+				B8C99A3C2B8B163F00A578FB /* ZoomSceneViewController.swift in Sources */,
 				B8B644B22B428F2100EABD97 /* AppDelegate.swift in Sources */,
 				B882A82F2B45C9C10073078B /* LaunchRouter.swift in Sources */,
+				B8C99A3E2B8B165000A578FB /* ZoomScenePresenter.swift in Sources */,
 				B8B841E62B81F9B7006A5317 /* DepartmentsAssembler.swift in Sources */,
 				B8B644E42B4311F200EABD97 /* RandomArtAssembler.swift in Sources */,
 				B8B644B42B428F2100EABD97 /* SceneDelegate.swift in Sources */,

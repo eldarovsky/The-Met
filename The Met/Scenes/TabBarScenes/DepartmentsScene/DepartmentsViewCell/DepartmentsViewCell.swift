@@ -105,7 +105,7 @@ extension DepartmentsViewCell: DepartmentsViewCellProtocol {
     }
 
     func showBlankCell() {
-        departmentImage.backgroundColor = .tabBarBackground
+        departmentImage.backgroundColor = .backgroundTabBar
         activityIndicator.startAnimating()
     }
 }

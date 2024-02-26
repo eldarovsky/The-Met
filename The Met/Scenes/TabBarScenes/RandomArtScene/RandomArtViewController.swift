@@ -18,6 +18,8 @@ protocol RandomArtViewControllerProtocol: AnyObject {
 final class RandomArtViewController: UIViewController {
     var presenter: RandomArtPresenterProtocol?
 
+    let tapGesture = UITapGestureRecognizer()
+
     // MARK: - UI elements
     private let canvas = UIImageView()
     private let art = UIImageView()
@@ -56,6 +58,10 @@ final class RandomArtViewController: UIViewController {
     private func goBack() {
         navigationController?.popViewController(animated: true)
     }
+
+    @objc func imageTapped() {
+        presenter?.zoomArt()
+    }
 }
 
 private extension RandomArtViewController {
@@ -66,6 +72,9 @@ private extension RandomArtViewController {
     }
 
     func addActions() {
+        tapGesture.addTarget(self, action: #selector(imageTapped))
+        art.addGestureRecognizer(tapGesture)
+
         nextButton.addTarget(self, action: #selector(getArt), for: .touchUpInside)
     }
 }
@@ -85,7 +94,6 @@ extension RandomArtViewController {
 extension RandomArtViewController {
     func setupScreen() {
         view.backgroundColor = .background
-        art.isUserInteractionEnabled = true
     }
 
     func setupCanvas() {
@@ -107,6 +115,7 @@ extension RandomArtViewController {
         art.layer.shadowOpacity = 0.25
         art.layer.shadowOffset = CGSize(width: -1, height: -1)
         art.contentMode = .scaleAspectFit
+        art.isUserInteractionEnabled = true
     }
 
     func setupActivityIndicator() {

@@ -5,7 +5,7 @@
 //  Created by Эльдар Абдуллин on 01.01.2024.
 //
 
-import UIKit
+import Foundation
 
 // MARK: - RandomArtSceneModel
 struct RandomArtModel {
@@ -16,6 +16,7 @@ struct RandomArtModel {
 protocol RandomArtPresenterProtocol {
     func fetchObject()
     func getArt()
+    func zoomArt()
 }
 
 final class RandomArtPresenter {
@@ -23,6 +24,7 @@ final class RandomArtPresenter {
     let router: RandomArtRouterProtocol
     private let networkManager = NetworkManager.shared
     var imageIDs: [Int]
+    private var currentImage: Data?
 
     init(router: RandomArtRouterProtocol, imageIDs: [Int]) {
         self.router = router
@@ -37,13 +39,7 @@ extension RandomArtPresenter: RandomArtPresenterProtocol {
         return "\(objectsURL)/\(imageURL)"
     }
 
-    // MARK: - Private methods
-//    @objc
-//    private func artTapped(_ sender: UITapGestureRecognizer) {
-//        guard let tappedImage = sender.view as? UIImageView else { return }
-//        performSegue(withIdentifier: "fullsizeArt", sender: tappedImage.image)
-//    }
-    
+    // MARK: - Private methods    
     func fetchObject() {
 
         let url = getImageURL()
@@ -63,6 +59,7 @@ extension RandomArtPresenter: RandomArtPresenterProtocol {
                         case .success(let imageData):
                             let randomArtModel = RandomArtModel(imageData: imageData, description: data.description)
                             self?.view?.render(randomArtModel: randomArtModel)
+                            self?.currentImage = imageData
 
                             DispatchQueue.main.async {
                                 self?.view?.stopAnimating()
@@ -103,5 +100,10 @@ extension RandomArtPresenter: RandomArtPresenterProtocol {
 
     func getArt() {
         fetchObject()
+    }
+
+    func zoomArt() {
+        guard let currentImage = currentImage else { return }
+        router.routeTo(target: RandomArtRouter.Target.zoomArt(fromData: currentImage))
     }
 }

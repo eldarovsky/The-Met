@@ -11,10 +11,11 @@ final class CustomButton: UIButton {
 
     init(
         title: String,
-        titleNormalColor: UIColor,
-        titleHighlightColor: UIColor,
-        font: UIFont,
-        backgroundColor: UIColor,
+        titleNormalColor: UIColor = .customGrey,
+        titleHighlightColor: UIColor = .customGreyLight,
+        tintColor: UIColor = .customGrey,
+        font: UIFont = .systemFont(ofSize: 21),
+        backgroundColor: UIColor = .clear,
         width: CGFloat,
         height: CGFloat
     ) {
@@ -24,6 +25,7 @@ final class CustomButton: UIButton {
             title: title,
             titleNormalColor: titleNormalColor,
             titleHighlightColor: titleHighlightColor,
+            tintColor: tintColor,
             font: font,
             backgroundColor: backgroundColor,
             width: width,
@@ -41,6 +43,7 @@ private extension CustomButton {
         title: String,
         titleNormalColor: UIColor,
         titleHighlightColor: UIColor,
+        tintColor: UIColor,
         font: UIFont,
         backgroundColor: UIColor,
         width: CGFloat,
@@ -49,6 +52,7 @@ private extension CustomButton {
         setTitle(title, for: .normal)
         setTitleColor(titleNormalColor, for: .normal)
         setTitleColor(titleHighlightColor, for: .highlighted)
+        self.tintColor = tintColor
         titleLabel?.font = font
         self.backgroundColor = backgroundColor
         widthAnchor.constraint(equalToConstant: width).isActive = true
