@@ -29,7 +29,7 @@ final class RandomArtViewController: UIViewController {
     private var nextButton = CustomButton(
         title: "Next",
         titleNormalColor: .white,
-        titleHighlightColor: .customGreyLight,
+        titleHighlightColor: .customGrayLight,
         font: .systemFont(ofSize: 21),
         backgroundColor: .clear,
         width: 150,
@@ -49,13 +49,11 @@ final class RandomArtViewController: UIViewController {
         navigationItem.backButtonTitle = "Back"
     }
 
-    @objc
-    private func getArt() {
+    @objc private func getArt() {
         presenter?.fetchObject()
     }
 
-    @objc
-    private func goBack() {
+    @objc private func goBack() {
         navigationController?.popViewController(animated: true)
     }
 
@@ -139,7 +137,7 @@ extension RandomArtViewController {
         descriptionLabel.font = UIFont.systemFont(ofSize: 17)
         descriptionLabel.minimumScaleFactor = 0.5
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.textColor = .customGrey
+        descriptionLabel.textColor = .customGray
         descriptionLabel.textAlignment = .left
         descriptionLabel.adjustsFontSizeToFitWidth = true
     }
@@ -185,7 +183,7 @@ extension RandomArtViewController {
     func setupButton() {
         nextButton.titleLabel?.font = UIFont.systemFont(ofSize: 21)
 
-        let normalColor = UIColor.customGrey
+        let normalColor = UIColor.customGray
         nextButton.setTitleColor(normalColor, for: .normal)
     }
 }

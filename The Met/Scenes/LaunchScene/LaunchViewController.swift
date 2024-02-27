@@ -53,7 +53,7 @@ private extension LaunchViewController {
         progressView.clipsToBounds = true
         progressView.layer.cornerRadius = 4
         progressView.progressTintColor = .white
-        progressView.trackTintColor = .customGrey
+        progressView.trackTintColor = .customGray
     }
 
     func addViews() {
@@ -93,8 +93,4 @@ extension LaunchViewController: LaunchViewControllerProtocol {
                 self.progressView.setProgress(progressFloat, animated: true)
             }
     }
-
-//    func performTransition(to viewController: UIViewController) {
-//        self.navigationController?.pushViewController(viewController, animated: true)
-//    }
 }

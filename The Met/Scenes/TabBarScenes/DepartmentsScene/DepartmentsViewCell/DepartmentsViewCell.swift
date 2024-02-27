@@ -77,10 +77,11 @@ class DepartmentsViewCell: UITableViewCell {
         self.backgroundView = backgroundView
 
         let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = .customGrey.withAlphaComponent(0.5)
+        selectedBackgroundView.backgroundColor = .customGray.withAlphaComponent(0.5)
         self.selectedBackgroundView = selectedBackgroundView
     }
 
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

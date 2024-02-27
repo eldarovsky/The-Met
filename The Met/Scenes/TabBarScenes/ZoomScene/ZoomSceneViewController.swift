@@ -7,51 +7,46 @@
 
 import UIKit
 
-protocol ZoomSceneViewControllerProtocol: AnyObject {}
-
+// MARK: - ZoomSceneViewController
 final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
-    var presenter: ZoomScenePresenterProtocol?
 
     // MARK: - UI Elements
-    private var closeButton = CustomButton(
-        title: "",
-        width: 30,
-        height: 30
-    )
+    private var closeButton = CustomButton(title: "", width: 30, height: 30)
+    private var saveButton = CustomButton(title: "Save", width: 150, height: 40)
     private var imageScrollView = UIScrollView()
     private var imageView = UIImageView()
-    private var saveButton = CustomButton(
-        title: "Save",
-        width: 150,
-        height: 40
-    )
 
     // MARK: - Private properties
-    private var image: UIImage?
+    private var imageData: Data
 
     // MARK: - Overrided methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         addActions()
-        setImage()
     }
 
+    // MARK: - Initializers
+    init(imageData: Data) {
+        self.imageData = imageData
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Private methods
-    @objc
-    private func closeZoomScene() {
+    @objc private func closeZoomScene() {
         dismiss(animated: true)
     }
 
-    @objc
-    private func saveImage() {
-        guard let image = image else { return }
+    @objc private func saveImage() {
+        guard let image = UIImage(data: imageData) else { return }
 
         let imageSaver = ImageSaver()
         imageSaver.writeToPhotoAlbum(image: image)
-
-        imageView.sizeToFit()
-        imageScrollView.contentSize = imageView.bounds.size
     }
 
     @objc private func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
@@ -77,27 +72,43 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
         imageView.addGestureRecognizer(doubleTapGesture)
     }
 
-    private func setImage() {
-        guard let imageData = presenter?.getImage() else { return }
-        guard let image = UIImage(data: imageData) else { return }
-        self.image = image
-        imageView.image = image
+    private func removeGestureRecognizers() {
+        if let gestureRecognizers = imageView.gestureRecognizers {
+            for gestureRecognizer in gestureRecognizers {
+                imageView.removeGestureRecognizer(gestureRecognizer)
+            }
+        }
+    }
+
+    deinit {
+        removeGestureRecognizers()
     }
 }
 
+// MARK: - ZoomSceneViewController extension
 private extension ZoomSceneViewController {
     func setupView() {
         setupUI()
+        setImage()
         addViews()
         setupLayout()
     }
+
+    func addActions() {
+        closeButton.addTarget(self, action: #selector(closeZoomScene), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
+        setupGestureRecognizer()
+    }
 }
 
+// MARK: - ZoomSceneViewController extension
 private extension ZoomSceneViewController {
     func setupUI() {
         view.backgroundColor = .tertiarySystemGroupedBackground
 
         closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+
+        saveButton.setImage(UIImage(systemName: "arrow.down"), for: .normal)
 
         imageScrollView.delegate = self
         imageScrollView.showsVerticalScrollIndicator = false
@@ -107,8 +118,14 @@ private extension ZoomSceneViewController {
 
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFit
+    }
 
-        saveButton.setImage(UIImage(systemName: "arrow.down"), for: .normal)
+    func setImage() {
+        guard let image = UIImage(data: imageData) else { return }
+        imageView.image = image
+
+        imageView.sizeToFit()
+        imageScrollView.contentSize = imageView.bounds.size
     }
 
     func addViews() {
@@ -143,15 +160,7 @@ private extension ZoomSceneViewController {
             saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -66)
         ])
     }
-
-    func addActions() {
-        closeButton.addTarget(self, action: #selector(closeZoomScene), for: .touchUpInside)
-        saveButton.addTarget(self, action: #selector(saveImage), for: .touchUpInside)
-        setupGestureRecognizer()
-    }
 }
-
-extension ZoomSceneViewController: ZoomSceneViewControllerProtocol {}
 
 // MARK: - UIScrollViewDelegate
 extension ZoomSceneViewController {

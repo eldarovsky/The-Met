@@ -11,9 +11,9 @@ final class CustomButton: UIButton {
 
     init(
         title: String,
-        titleNormalColor: UIColor = .customGrey,
-        titleHighlightColor: UIColor = .customGreyLight,
-        tintColor: UIColor = .customGrey,
+        titleNormalColor: UIColor = .customGray,
+        titleHighlightColor: UIColor = .customGrayLight,
+        tintColor: UIColor = .customGray,
         font: UIFont = .systemFont(ofSize: 21),
         backgroundColor: UIColor = .clear,
         width: CGFloat,
@@ -33,6 +33,7 @@ final class CustomButton: UIButton {
         )
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

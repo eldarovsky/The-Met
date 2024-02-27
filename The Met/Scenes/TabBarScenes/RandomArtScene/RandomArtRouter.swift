@@ -24,13 +24,10 @@ final class RandomArtRouter {
 extension RandomArtRouter: RandomArtRouterProtocol {
     func routeTo(target: Any) {
         guard let target = target as? RandomArtRouter.Target else { return }
-        
+
         switch target {
         case .zoomArt (let imageData):
-            let zoomVC = ZoomSceneViewController()
-            let zoomAssembler = ZoomSceneAssembler(image: imageData)
-            zoomAssembler.configure(viewController: zoomVC)
-
+            let zoomVC = ZoomSceneViewController(imageData: imageData)
             navigationController.present(zoomVC, animated: true)
         }
     }

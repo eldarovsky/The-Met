@@ -47,7 +47,7 @@ private extension DepartmentsViewController {
         appearance.configureWithOpaqueBackground()
 
         appearance.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.customGrey,
+            NSAttributedString.Key.foregroundColor: UIColor.customGray,
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 21)
         ]
 
@@ -59,7 +59,7 @@ private extension DepartmentsViewController {
 
         title = "Departments"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem?.tintColor = .customGrey
+        navigationItem.backBarButtonItem?.tintColor = .customGray
     }
 
     func setupTableView() {

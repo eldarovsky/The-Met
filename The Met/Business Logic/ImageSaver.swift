@@ -16,7 +16,6 @@ final class ImageSaver: NSObject {
     }
 
     // MARK: - Private Methods
-    @objc
-    private func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    @objc private func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
     }
 }
