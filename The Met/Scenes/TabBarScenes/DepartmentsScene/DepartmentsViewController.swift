@@ -22,7 +22,7 @@ final class DepartmentsViewController: UITableViewController {
         presenter?.getDepartmentsID()
     }
 
-    @objc func refreshData(_ sender: Any) {
+    @objc func refreshData() {
         presenter?.resetParsingStatus()
         presenter?.getDepartmentsID()
         tableView.refreshControl?.endRefreshing()
@@ -48,9 +48,14 @@ private extension DepartmentsViewController {
         tableView.register(DepartmentsViewCell.self, forCellReuseIdentifier: "departmentCell")
         tableView.separatorStyle = .none
 
-        // Добавление обновления при потягивании вниз
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshControl.tintColor = .customGray
+        refreshControl.backgroundColor = .backgroundTabBar
+
+        let attributedTitle = NSAttributedString(string: "Pull to Refresh", attributes: [.foregroundColor: UIColor.gray])
+        refreshControl.attributedTitle = attributedTitle
+
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         tableView.refreshControl = refreshControl
     }
 }

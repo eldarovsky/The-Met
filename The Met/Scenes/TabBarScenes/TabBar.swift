@@ -33,16 +33,16 @@ private extension TabBar {
 
         let tabBarItemAppearance = UITabBarItemAppearance()
 
-        tabBarItemAppearance.normal.iconColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1).withAlphaComponent(0.5)
-        tabBar.tintColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+        tabBarItemAppearance.normal.iconColor = .customGrayLight
+        tabBar.tintColor = .customGray
 
         tabBarItemAppearance.normal.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1).withAlphaComponent(0.5),
+            NSAttributedString.Key.foregroundColor: UIColor.customGrayLight,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)
         ]
 
         tabBarItemAppearance.selected.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1),
+            NSAttributedString.Key.foregroundColor: UIColor.customGray,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)
         ]
 

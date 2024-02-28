@@ -24,8 +24,8 @@ enum NetworkError: Error {
 
 // MARK: - Network Manager Protocol
 protocol NetworkManagerProtocol {
-    func fetchObjects<T: Decodable>(_ type: T.Type, from url: String, completion: @escaping(Result<T, NetworkError>) -> Void)
-    func fetchImage(from url: String, completion: @escaping (Result<Data, NetworkError>) -> Void)
+    func fetchObjects<T: Decodable>(_ type: T.Type, from url: String, timeoutInterval: TimeInterval, completion: @escaping(Result<T, NetworkError>) -> Void)
+    func fetchImage(from url: String, timeoutInterval: TimeInterval, completion: @escaping (Result<Data, NetworkError>) -> Void)
     func alertAction(
         fromVC viewController: UIViewController?,
         withTitle title: String?,
@@ -45,13 +45,16 @@ final class NetworkManager: NetworkManagerProtocol {
     private init() {}
 
     // MARK: - Public Methods
-    func fetchObjects<T: Decodable>(_ type: T.Type, from url: String, completion: @escaping(Result<T, NetworkError>) -> Void) {
+    func fetchObjects<T: Decodable>(_ type: T.Type, from url: String, timeoutInterval: TimeInterval = 10, completion: @escaping(Result<T, NetworkError>) -> Void) {
         guard let url = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
         }
 
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        var request = URLRequest(url: url)
+        request.timeoutInterval = timeoutInterval
+
+        URLSession.shared.dataTask(with: request) { data, _, error in
             guard let objectsData = data else {
                 completion(.failure(.noData))
                 print(error?.localizedDescription ?? "No error description")
@@ -73,13 +76,16 @@ final class NetworkManager: NetworkManagerProtocol {
         }.resume()
     }
 
-    func fetchImage(from url: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+    func fetchImage(from url: String, timeoutInterval: TimeInterval = 10, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         guard let imageURL = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
         }
 
-        URLSession.shared.dataTask(with: imageURL) { data, _, error in
+        var request = URLRequest(url: imageURL)
+        request.timeoutInterval = timeoutInterval
+
+        URLSession.shared.dataTask(with: request) { data, _, error in
             guard let imageData = data else {
                 completion(.failure(.noData))
                 return
