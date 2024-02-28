@@ -18,6 +18,7 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: - Private properties
     private var imageData: Data
+    private var dataHashValue: Int = 0
 
     // MARK: - Overrided methods
     override func viewDidLoad() {
@@ -29,24 +30,36 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Initializers
     init(imageData: Data) {
         self.imageData = imageData
+        self.dataHashValue = UserDefaults.standard.integer(forKey: "dataHashValue")
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Private methods
     @objc private func closeZoomScene() {
         dismiss(animated: true)
     }
 
     @objc private func saveImage() {
-        guard let image = UIImage(data: imageData) else { return }
+        if imageData.hashValue != dataHashValue {
+            guard let image = UIImage(data: imageData) else { return }
 
-        let imageSaver = ImageSaver()
-        imageSaver.writeToPhotoAlbum(image: image)
+            let imageSaver = ImageSaver()
+            imageSaver.writeToPhotoAlbum(image: image)
+
+            dataHashValue = imageData.hashValue
+            UserDefaults.standard.set(dataHashValue, forKey: "dataHashValue")
+        } else {
+            let alert = UIAlertController(title: "Already saved", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(action)
+
+            present(alert, animated: true)
+        }
     }
 
     @objc private func handleDoubleTap(_ gesture: UITapGestureRecognizer) {

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Network
 
 // MARK: - JSON links
 enum Link {
@@ -42,22 +41,11 @@ final class NetworkManager: NetworkManagerProtocol {
     // MARK: - Static Property (singletone pattern)
     static let shared = NetworkManager()
 
-    // MARK: - Private Properties
-    private let pathMonitor = NWPathMonitor()
-    private var isNetworkAvailable = true
-
     // MARK: - Private Initialiser (singletone pattern)
-    private init() {
-        startMonitoring()
-    }
+    private init() {}
 
     // MARK: - Public Methods
     func fetchObjects<T: Decodable>(_ type: T.Type, from url: String, completion: @escaping(Result<T, NetworkError>) -> Void) {
-        guard isNetworkAvailable else {
-            completion(.failure(.noInternetConnection))
-            return
-        }
-
         guard let url = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
@@ -86,11 +74,6 @@ final class NetworkManager: NetworkManagerProtocol {
     }
 
     func fetchImage(from url: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
-        guard isNetworkAvailable else {
-            completion(.failure(.noInternetConnection))
-            return
-        }
-
         guard let imageURL = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
@@ -123,14 +106,5 @@ final class NetworkManager: NetworkManagerProtocol {
 
         guard let viewController = viewController else { return }
         viewController.present(alert, animated: true)
-    }
-
-    // MARK: - Private Methods
-    private func startMonitoring() {
-        pathMonitor.pathUpdateHandler = { [weak self] path in
-            self?.isNetworkAvailable = path.status == .satisfied
-        }
-
-        pathMonitor.start(queue: DispatchQueue.main)
     }
 }

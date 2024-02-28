@@ -45,6 +45,7 @@ final class RandomArtViewController: UIViewController {
 
         presenter?.fetchObject()
 
+
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.backButtonTitle = "Back"
     }
@@ -117,9 +118,9 @@ extension RandomArtViewController {
     }
 
     func setupActivityIndicator() {
-        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .customGray
         activityIndicator.style = .large
-        activityIndicator.contentMode = .scaleToFill
+        activityIndicator.hidesWhenStopped = true
     }
 
     func setupPlacard() {

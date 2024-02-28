@@ -89,7 +89,7 @@
 				B882A8252B45A15C0073078B /* TabBar.swift */,
 				B8B644DC2B42F01700EABD97 /* RandomArtScene */,
 				B882A82B2B45C9680073078B /* DepartmentsScene */,
-				B8C99A382B8B15A600A578FB /* ZoomScene */,
+				B8C99A3B2B8B163F00A578FB /* ZoomSceneViewController.swift */,
 			);
 			path = TabBarScenes;
 			sourceTree = "<group>";
@@ -218,14 +218,6 @@
 				B8B644E92B43121F00EABD97 /* RandomArtRouter.swift */,
 			);
 			path = RandomArtScene;
-			sourceTree = "<group>";
-		};
-		B8C99A382B8B15A600A578FB /* ZoomScene */ = {
-			isa = PBXGroup;
-			children = (
-				B8C99A3B2B8B163F00A578FB /* ZoomSceneViewController.swift */,
-			);
-			path = ZoomScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

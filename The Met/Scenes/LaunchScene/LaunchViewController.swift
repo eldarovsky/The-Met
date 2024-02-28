@@ -10,7 +10,6 @@ import UIKit
 protocol LaunchViewControllerProtocol: AnyObject {
     func updateProgressView(progress: Float)
     func animateProgressView(withDuration: TimeInterval, delay: TimeInterval, progressFloat: Float)
-//    func performTransition(to viewController: UIViewController)
 }
 
 // MARK: - LaunchViewController
@@ -80,7 +79,6 @@ private extension LaunchViewController {
 }
 
 extension LaunchViewController: LaunchViewControllerProtocol {
-    
     func updateProgressView(progress: Float) {
         progressView.setProgress(progress, animated: true)
     }

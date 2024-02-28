@@ -21,6 +21,12 @@ final class DepartmentsViewController: UITableViewController {
         setupView()
         presenter?.getDepartmentsID()
     }
+
+    @objc func refreshData(_ sender: Any) {
+        presenter?.resetParsingStatus()
+        presenter?.getDepartmentsID()
+        tableView.refreshControl?.endRefreshing()
+    }
 }
 
 private extension DepartmentsViewController {
@@ -34,6 +40,18 @@ private extension DepartmentsViewController {
     func setupUI() {
         setupScreen()
         setupNavigationBar()
+    }
+
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(DepartmentsViewCell.self, forCellReuseIdentifier: "departmentCell")
+        tableView.separatorStyle = .none
+
+        // Добавление обновления при потягивании вниз
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 }
 
@@ -60,13 +78,6 @@ private extension DepartmentsViewController {
         title = "Departments"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .customGray
-    }
-
-    func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(DepartmentsViewCell.self, forCellReuseIdentifier: "departmentCell")
-        tableView.separatorStyle = .none
     }
 }
 
@@ -100,6 +111,8 @@ extension DepartmentsViewController {
 
         guard let cell = tableView.cellForRow(at: indexPath) as? DepartmentsViewCell else { return }
         cell.startAnimating()
+
+        guard !departments.isEmpty else { return }
 
         let department = departments[indexPath.row]
         presenter?.getDepartmentsURL(fromDepartment: department)

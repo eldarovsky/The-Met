@@ -12,6 +12,7 @@ protocol DepartmentsPresenterProtocol {
     func getDepartmentsURL(fromDepartment department: Department)
     func getObjectsIDs(forCell cell: DepartmentsViewCell)
     func getParsingStatus() -> Bool
+    func resetParsingStatus()
 }
 
 final class DepartmentsPresenter {
@@ -39,6 +40,8 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
             case .failure(let error):
                 print(error.localizedDescription)
 
+                self?.isParsing = false
+
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     self.networkManager.alertAction()
@@ -52,6 +55,8 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
     }
 
     func getObjectsIDs(forCell cell: DepartmentsViewCell) {
+
+
         guard !isParsing else { return }
         isParsing = true
 
@@ -81,5 +86,9 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
     func getParsingStatus() -> Bool {
         print("Current status: \(isParsing)")
         return isParsing
+    }
+
+    func resetParsingStatus() {
+        isParsing = false
     }
 }
