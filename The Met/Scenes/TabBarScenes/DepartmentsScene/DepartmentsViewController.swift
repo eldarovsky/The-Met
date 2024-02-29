@@ -13,6 +13,7 @@ protocol DepartmentsViewControllerProtocol: AnyObject {
 }
 
 final class DepartmentsViewController: UITableViewController {
+    
     var presenter: DepartmentsPresenterProtocol?
 
     private var departments: [Department] = []
@@ -22,6 +23,8 @@ final class DepartmentsViewController: UITableViewController {
         setupView()
         presenter?.getDepartmentsID()
     }
+
+
 
     @objc private func refreshData() {
         presenter?.resetParsingStatus()
@@ -51,7 +54,7 @@ private extension DepartmentsViewController {
 
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .customGray
-        refreshControl.backgroundColor = .backgroundTabBar
+        refreshControl.backgroundColor = .customGreen
 
         let attributedTitle = NSAttributedString(string: "Pull to Refresh", attributes: [.foregroundColor: UIColor.gray])
         refreshControl.attributedTitle = attributedTitle
@@ -63,7 +66,7 @@ private extension DepartmentsViewController {
 
 private extension DepartmentsViewController {
     func setupScreen() {
-        view.backgroundColor = .background
+        view.backgroundColor = .customGreenLight
     }
 
     func setupNavigationBar() {
@@ -75,7 +78,7 @@ private extension DepartmentsViewController {
             NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 21)
         ]
 
-        appearance.backgroundColor = .background
+        appearance.backgroundColor = .customGreenLight
 
         guard let navigationBar = navigationController?.navigationBar else { return }
         navigationBar.standardAppearance = appearance
@@ -88,6 +91,7 @@ private extension DepartmentsViewController {
 }
 
 extension DepartmentsViewController {
+
     // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !departments.isEmpty {
@@ -119,7 +123,6 @@ extension DepartmentsViewController {
         cell.startAnimating()
 
         guard !departments.isEmpty else { return }
-
         let department = departments[indexPath.row]
         presenter?.getDepartmentsURL(fromDepartment: department)
 

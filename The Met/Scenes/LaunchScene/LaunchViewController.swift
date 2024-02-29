@@ -16,11 +16,11 @@ protocol LaunchViewControllerProtocol: AnyObject {
 // MARK: - LaunchViewController
 final class LaunchViewController: UIViewController {
 
-    var presenter: LaunchPresenterProtocol?
-
     // MARK: - UI elements
     private let logo = UIImageView(frame: CGRect(x: 0, y: 0, width: 151, height: 150))
     private let progressView = UIProgressView()
+    
+    var presenter: LaunchPresenterProtocol?
 
     // MARK: - Life cycle methods
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ private extension LaunchViewController {
     func setupUI() {
         title = "The Metropolitan Museum of Art"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        view.backgroundColor = .launchScreen
+        view.backgroundColor = .customRed
 
         guard let image = UIImage(named: "logo") else { return }
         logo.image = image
@@ -59,14 +59,11 @@ private extension LaunchViewController {
     func addViews() {
         [logo, progressView].forEach { subview in
             view.addSubview(subview)
+            subview.translatesAutoresizingMaskIntoConstraints = false
         }
     }
 
     func setupLayout() {
-        [logo, progressView].forEach { subview in
-            subview.translatesAutoresizingMaskIntoConstraints = false
-        }
-
         NSLayoutConstraint.activate([
             logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logo.centerYAnchor.constraint(equalTo: view.centerYAnchor),

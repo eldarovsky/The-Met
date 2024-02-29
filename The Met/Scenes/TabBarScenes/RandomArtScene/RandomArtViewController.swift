@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AudioToolbox
 
 // MARK: - RandomArtViewControllerProtocol
 protocol RandomArtViewControllerProtocol: AnyObject {
@@ -18,10 +17,6 @@ protocol RandomArtViewControllerProtocol: AnyObject {
 }
 
 final class RandomArtViewController: UIViewController {
-    var presenter: RandomArtPresenterProtocol?
-
-    private let tapGesture = UITapGestureRecognizer()
-    private let hapticFeedbackManager = HapticFeedbackManager.shared
 
     // MARK: - UI elements
     private let canvas = UIImageView()
@@ -39,18 +34,17 @@ final class RandomArtViewController: UIViewController {
         height: 40
     )
 
+    var presenter: RandomArtPresenterProtocol?
+
+    private let hapticFeedbackManager = HapticFeedbackManager.shared
+    private let tapGesture = UITapGestureRecognizer()
+
     // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
         setupView()
         addActions()
-
         presenter?.fetchObject()
-
-
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationItem.backButtonTitle = "Back"
     }
 
     @objc private func getArt() {
@@ -96,7 +90,9 @@ private extension RandomArtViewController {
 
 private extension RandomArtViewController {
     func setupScreen() {
-        view.backgroundColor = .background
+        view.backgroundColor = .customGreenLight
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationItem.backButtonTitle = "Back"
     }
 
     func setupCanvas() {
@@ -108,7 +104,6 @@ private extension RandomArtViewController {
 
         guard let image = UIImage(named: "canvas") else { return }
         canvas.image = image
-
         canvas.contentMode = .scaleToFill
     }
 
@@ -187,9 +182,7 @@ private extension RandomArtViewController {
 
     func setupButton() {
         nextButton.titleLabel?.font = UIFont.systemFont(ofSize: 21)
-
-        let normalColor = UIColor.customGray
-        nextButton.setTitleColor(normalColor, for: .normal)
+        nextButton.setTitleColor(UIColor.customGray, for: .normal)
     }
 }
 

@@ -9,7 +9,6 @@
 import UIKit
 
 final class CustomButton: UIButton {
-
     init(
         title: String,
         titleNormalColor: UIColor = .customGray,

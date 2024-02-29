@@ -20,12 +20,15 @@ protocol RandomArtPresenterProtocol {
 }
 
 final class RandomArtPresenter {
+
     weak var view: RandomArtViewControllerProtocol?
     private let router: RandomArtRouterProtocol
+    
     private let networkManager = NetworkManager.shared
+    private let alertManager = AlertManager.shared
     private var imageIDs: [Int]
     private var currentImage: Data?
-    
+
     init(router: RandomArtRouterProtocol, imageIDs: [Int]) {
         self.router = router
         self.imageIDs = imageIDs
@@ -38,8 +41,7 @@ extension RandomArtPresenter: RandomArtPresenterProtocol {
         let imageURL = String(imageIDs.randomElement() ?? 168777)
         return "\(objectsURL)/\(imageURL)"
     }
-    
-    // MARK: - Private methods
+
     func fetchObject() {
         let url = getImageURL()
         
@@ -71,8 +73,7 @@ extension RandomArtPresenter: RandomArtPresenterProtocol {
                                 
                                 guard let self = self else { return }
                                 guard let viewController = self.view as? RandomArtViewController else { return }
-                                
-                                self.networkManager.alertAction(fromVC: viewController, buttonTitle: "RETRY") {
+                                self.alertManager.alertAction(fromVC: viewController, buttonTitle: "RETRY") {
                                     self.fetchObject()
                                 }
                             }
@@ -96,8 +97,7 @@ extension RandomArtPresenter: RandomArtPresenterProtocol {
                     
                     guard let self = self else { return }
                     guard let viewController = self.view as? RandomArtViewController else { return }
-                    
-                    self.networkManager.alertAction(fromVC: viewController, buttonTitle: "RETRY") {
+                    self.alertManager.alertAction(fromVC: viewController, buttonTitle: "RETRY") {
                         self.fetchObject()
                     }
                 }

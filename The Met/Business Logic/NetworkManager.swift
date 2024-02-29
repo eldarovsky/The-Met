@@ -26,14 +26,19 @@ enum NetworkError: Error {
 // MARK: - Network Manager
 final class NetworkManager {
 
-    // MARK: - Static Property (singletone pattern)
+    // MARK: - Static Property (singleton pattern)
     static let shared = NetworkManager()
 
-    // MARK: - Private Initialiser (singletone pattern)
+    // MARK: - Private Initialiser (singleton pattern)
     private init() {}
 
     // MARK: - Public Methods
-    func fetchObjects<T: Decodable>(_ type: T.Type, from url: String, timeoutInterval: TimeInterval = 10, completion: @escaping(Result<T, NetworkError>) -> Void) {
+    func fetchObjects<T: Decodable>(
+        _ type: T.Type,
+        from url: String,
+        timeoutInterval: TimeInterval = 10,
+        completion: @escaping(Result<T, NetworkError>) -> Void
+    ) {
         guard let url = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
@@ -64,7 +69,11 @@ final class NetworkManager {
         }.resume()
     }
 
-    func fetchImage(from url: String, timeoutInterval: TimeInterval = 10, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+    func fetchImage(
+        from url: String,
+        timeoutInterval: TimeInterval = 10,
+        completion: @escaping (Result<Data, NetworkError>) -> Void
+    ) {
         guard let imageURL = URL(string: url) else {
             completion(.failure(.invalidURL))
             return
@@ -83,22 +92,5 @@ final class NetworkManager {
                 completion(.success(imageData))
             }
         }.resume()
-    }
-
-    func alertAction(
-        fromVC viewController: UIViewController? = nil,
-        withTitle title: String? = "You are offline",
-        andMessage message: String? = "Please check your network",
-        buttonTitle: String? = "OK",
-        completion: (() -> Void)? = nil
-    ) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: buttonTitle, style: .default) { _ in
-            completion?()
-        }
-        alert.addAction(action)
-
-        guard let viewController = viewController else { return }
-        viewController.present(alert, animated: true)
     }
 }

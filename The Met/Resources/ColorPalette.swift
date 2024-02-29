@@ -10,13 +10,11 @@ import UIKit
 
 // MARK: - Color Swatch
 extension UIColor {
-    static let launchScreen = UIColor(red: 236/255, green: 1/255, blue: 42/255, alpha: 1)
-
+    static let customRed = UIColor(red: 236/255, green: 1/255, blue: 42/255, alpha: 1)
     static let customGray = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
     static let customGrayLight = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1).withAlphaComponent(0.5)
-
-    static let backgroundTabBar = UIColor(red: 159/255, green: 166/255, blue: 151/255, alpha: 1)
-    static let background = UIColor(red: 180/255, green: 187/255, blue: 171/255, alpha: 1)
+    static let customGreen = UIColor(red: 159/255, green: 166/255, blue: 151/255, alpha: 1)
+    static let customGreenLight = UIColor(red: 180/255, green: 187/255, blue: 171/255, alpha: 1)
 }
 
 extension CGColor {

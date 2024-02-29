@@ -73,7 +73,7 @@ final class DepartmentsViewCell: UITableViewCell {
         ])
 
         let backgroundView = UIView()
-        backgroundView.backgroundColor = .background
+        backgroundView.backgroundColor = .customGreenLight
         self.backgroundView = backgroundView
 
         let selectedBackgroundView = UIView()
@@ -106,7 +106,7 @@ extension DepartmentsViewCell: DepartmentsViewCellProtocol {
     }
 
     func showBlankCell() {
-        departmentImage.backgroundColor = .backgroundTabBar
+        departmentImage.backgroundColor = .customGreen
         activityIndicator.startAnimating()
     }
 }

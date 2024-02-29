@@ -16,13 +16,15 @@ protocol LaunchPresenterProtocol {
 }
 
 final class LaunchPresenter {
+
     weak var view: LaunchViewControllerProtocol?
     private let router: LaunchRouterProtocol
 
     // MARK: - Private properties
     private let networkManager = NetworkManager.shared
-    private var progressTimer: Timer?
+    private let alertManager = AlertManager.shared
     private let progress = Progress(totalUnitCount: 5)
+    private var progressTimer: Timer?
 
     init(router: LaunchRouterProtocol) {
         self.router = router
@@ -30,6 +32,7 @@ final class LaunchPresenter {
 }
 
 extension LaunchPresenter: LaunchPresenterProtocol {
+    
     // MARK: - LaunchPresenterProtocol methods
      func fetchObjects() {
          networkManager.fetchObjects(Objects.self, from: Link.baseURL) { [weak self] result in
@@ -40,7 +43,6 @@ extension LaunchPresenter: LaunchPresenterProtocol {
                      self?.router.routeTo(target: LaunchRouter.Target.tabBar(imageIDs: objects.objectIDs))
                      self?.stopProgressViewAnimation()
                  }
-
              case .failure(let error):
                  print(error.localizedDescription)
 
@@ -48,11 +50,11 @@ extension LaunchPresenter: LaunchPresenterProtocol {
                      self?.resetProgress()
                      self?.stopProgressViewAnimation()
 
-                     guard let viewController = self?.view as? LaunchViewController else { return }
-
-                     self?.networkManager.alertAction(fromVC: viewController, buttonTitle: "RETRY") {
-                         self?.startProgressViewAnimation()
-                         self?.fetchObjects()
+                     guard let self = self else { return }
+                     guard let viewController = self.view as? LaunchViewController else { return }
+                     self.alertManager.alertAction(fromVC: viewController, buttonTitle: "RETRY") {
+                         self.startProgressViewAnimation()
+                         self.fetchObjects()
                      }
                  }
              }

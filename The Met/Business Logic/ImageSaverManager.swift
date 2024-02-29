@@ -1,5 +1,5 @@
 //
-//  ImageSaver.swift
+//  ImageSaverManager.swift
 //  The Met
 //
 //  Created by Eldar Abdullin on 01.01.2024.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-// MARK: - ImageSaver
-final class ImageSaver: NSObject {
+// MARK: - ImageSaverManager
+final class ImageSaverManager: NSObject {
 
     // MARK: - Public Methods
     func writeToPhotoAlbum(image: UIImage) {

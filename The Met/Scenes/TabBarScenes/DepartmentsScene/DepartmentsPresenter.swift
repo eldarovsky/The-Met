@@ -21,6 +21,7 @@ final class DepartmentsPresenter {
     private let router: DepartmentsRouterProtocol
 
     private let networkManager = NetworkManager.shared
+    private let alertManager = AlertManager.shared
     private var departments: [Department]?
     private var departmentURL = ""
     private var objectIDs: [Int]?
@@ -45,7 +46,7 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
 
                 DispatchQueue.main.async {
                     guard let self = self else { return }
-                    self.networkManager.alertAction()
+                    self.alertManager.alertAction()
                 }
             }
         }
@@ -75,7 +76,7 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
                 DispatchQueue.main.async {
                     guard let self = self else { return }
 
-                    self.networkManager.alertAction() {
+                    self.alertManager.alertAction() {
                         cell.stopAnimating()
                         self.isParsing = false
                     }
@@ -85,7 +86,6 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
     }
 
     func getParsingStatus() -> Bool {
-        print("Current status: \(isParsing)")
         return isParsing
     }
 

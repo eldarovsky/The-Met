@@ -11,10 +11,10 @@ import UIKit
 final class HapticFeedbackManager {
     static let shared = HapticFeedbackManager()
 
+    private init() {}
+
     func enableFeedback() {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
     }
-
-    private init() {}
 }

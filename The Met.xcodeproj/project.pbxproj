@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B828E4552B90D6030045BF80 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828E4542B90D6030045BF80 /* AlertManager.swift */; };
 		B86B8DDE2B84A86E007D372D /* DepartmentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86B8DDD2B84A86E007D372D /* DepartmentsViewCell.swift */; };
 		B86E63D22B8FB4B700452379 /* HapticFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E63D12B8FB4B700452379 /* HapticFeedbackManager.swift */; };
 		B882A8292B45A15C0073078B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882A8252B45A15C0073078B /* TabBar.swift */; };
@@ -19,7 +20,7 @@
 		B8B644BB2B428F2200EABD97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8B644BA2B428F2200EABD97 /* Assets.xcassets */; };
 		B8B644BE2B428F2200EABD97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B644BC2B428F2200EABD97 /* LaunchScreen.storyboard */; };
 		B8B644CC2B429C7E00EABD97 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B644CB2B429C7E00EABD97 /* NetworkManager.swift */; };
-		B8B644CE2B429CC900EABD97 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B644CD2B429CC900EABD97 /* ImageSaver.swift */; };
+		B8B644CE2B429CC900EABD97 /* ImageSaverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B644CD2B429CC900EABD97 /* ImageSaverManager.swift */; };
 		B8B644D02B429CF500EABD97 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B644CF2B429CF500EABD97 /* Models.swift */; };
 		B8B644D22B429EF800EABD97 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B644D12B429EF800EABD97 /* CustomButton.swift */; };
 		B8B644D42B429F3800EABD97 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B644D32B429F3800EABD97 /* ColorPalette.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B828E4542B90D6030045BF80 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		B86B8DDD2B84A86E007D372D /* DepartmentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsViewCell.swift; sourceTree = "<group>"; };
 		B86E63D12B8FB4B700452379 /* HapticFeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackManager.swift; sourceTree = "<group>"; };
 		B882A8252B45A15C0073078B /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		B8B644BD2B428F2200EABD97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8B644BF2B428F2200EABD97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8B644CB2B429C7E00EABD97 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		B8B644CD2B429CC900EABD97 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		B8B644CD2B429CC900EABD97 /* ImageSaverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaverManager.swift; sourceTree = "<group>"; };
 		B8B644CF2B429CF500EABD97 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		B8B644D12B429EF800EABD97 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B8B644D32B429F3800EABD97 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
@@ -187,8 +189,9 @@
 			children = (
 				B8B644C72B42981000EABD97 /* Models */,
 				B8B644CB2B429C7E00EABD97 /* NetworkManager.swift */,
-				B8B644CD2B429CC900EABD97 /* ImageSaver.swift */,
+				B8B644CD2B429CC900EABD97 /* ImageSaverManager.swift */,
 				B86E63D12B8FB4B700452379 /* HapticFeedbackManager.swift */,
+				B828E4542B90D6030045BF80 /* AlertManager.swift */,
 			);
 			path = "Business Logic";
 			sourceTree = "<group>";
@@ -301,7 +304,7 @@
 				B8B644DA2B42EF7E00EABD97 /* MVPProtocol.swift in Sources */,
 				B8B841EA2B81F9DE006A5317 /* DepartmentsRouter.swift in Sources */,
 				B8B644B62B428F2100EABD97 /* LaunchViewController.swift in Sources */,
-				B8B644CE2B429CC900EABD97 /* ImageSaver.swift in Sources */,
+				B8B644CE2B429CC900EABD97 /* ImageSaverManager.swift in Sources */,
 				B8B644E82B43121700EABD97 /* RandomArtPresenter.swift in Sources */,
 				B882A82E2B45C9C10073078B /* LaunchPresenter.swift in Sources */,
 				B8B644D02B429CF500EABD97 /* Models.swift in Sources */,
@@ -310,6 +313,7 @@
 				B8B644EA2B43121F00EABD97 /* RandomArtRouter.swift in Sources */,
 				B8B644D22B429EF800EABD97 /* CustomButton.swift in Sources */,
 				B8B644DE2B42F04B00EABD97 /* LaunchAssembler.swift in Sources */,
+				B828E4552B90D6030045BF80 /* AlertManager.swift in Sources */,
 				B86E63D22B8FB4B700452379 /* HapticFeedbackManager.swift in Sources */,
 				B8C99A3C2B8B163F00A578FB /* ZoomSceneViewController.swift in Sources */,
 				B8B644B22B428F2100EABD97 /* AppDelegate.swift in Sources */,

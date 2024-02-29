@@ -52,7 +52,7 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
         if imageData.hashValue != dataHashValue {
             guard let image = UIImage(data: imageData) else { return }
 
-            let imageSaver = ImageSaver()
+            let imageSaver = ImageSaverManager()
             imageSaver.writeToPhotoAlbum(image: image)
 
             dataHashValue = imageData.hashValue
@@ -140,8 +140,8 @@ private extension ZoomSceneViewController {
     func setImage() {
         guard let image = UIImage(data: imageData) else { return }
         imageView.image = image
-
         imageView.sizeToFit()
+
         imageScrollView.contentSize = imageView.bounds.size
     }
 
