@@ -20,7 +20,7 @@ final class RandomArtViewController: UIViewController {
     var presenter: RandomArtPresenterProtocol?
 
     private let tapGesture = UITapGestureRecognizer()
-    private let hapticFeedback = HapticFeedback.shared
+    private let hapticFeedbackManager = HapticFeedbackManager.shared
 
     // MARK: - UI elements
     private let canvas = UIImageView()
@@ -28,7 +28,7 @@ final class RandomArtViewController: UIViewController {
     private let activityIndicator = UIActivityIndicatorView()
     private let placard = UIImageView()
     private let descriptionLabel = UILabel()
-    private var nextButton = CustomButton(
+    private let nextButton = CustomButton(
         title: "Next",
         titleNormalColor: .white,
         titleHighlightColor: .customGrayLight,
@@ -53,7 +53,7 @@ final class RandomArtViewController: UIViewController {
     }
 
     @objc private func getArt() {
-        hapticFeedback.enableFeedback()
+        hapticFeedbackManager.enableFeedback()
         presenter?.fetchObject()
     }
 
@@ -61,7 +61,7 @@ final class RandomArtViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc func imageTapped() {
+    @objc private func imageTapped() {
         presenter?.zoomArt()
     }
 }
@@ -81,7 +81,7 @@ private extension RandomArtViewController {
     }
 }
 
-extension RandomArtViewController {
+private extension RandomArtViewController {
     func setupUI() {
         setupScreen()
         setupCanvas()
@@ -93,7 +93,7 @@ extension RandomArtViewController {
     }
 }
 
-extension RandomArtViewController {
+private extension RandomArtViewController {
     func setupScreen() {
         view.backgroundColor = .background
     }

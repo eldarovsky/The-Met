@@ -22,7 +22,7 @@ final class DepartmentsViewController: UITableViewController {
         presenter?.getDepartmentsID()
     }
 
-    @objc func refreshData() {
+    @objc private func refreshData() {
         presenter?.resetParsingStatus()
         presenter?.getDepartmentsID()
         tableView.refreshControl?.endRefreshing()

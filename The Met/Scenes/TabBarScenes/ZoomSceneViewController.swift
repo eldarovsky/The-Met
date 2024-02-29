@@ -11,13 +11,13 @@ import UIKit
 final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
 
     // MARK: - UI Elements
-    private var closeButton = CustomButton(title: "", width: 30, height: 30)
-    private var saveButton = CustomButton(title: "Save", width: 150, height: 40)
-    private var imageScrollView = UIScrollView()
-    private var imageView = UIImageView()
+    private let closeButton = CustomButton(title: "", width: 30, height: 30)
+    private let saveButton = CustomButton(title: "Save", width: 150, height: 40)
+    private let imageScrollView = UIScrollView()
+    private let imageView = UIImageView()
 
     // MARK: - Private properties
-    private let hapticFeedback = HapticFeedback.shared
+    private let hapticFeedbackManager = HapticFeedbackManager.shared
     private var imageData: Data
     private var dataHashValue: Int = 0
 
@@ -46,7 +46,7 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
     }
 
     @objc private func saveImage() {
-        hapticFeedback.enableFeedback()
+        hapticFeedbackManager.enableFeedback()
 
         if imageData.hashValue != dataHashValue {
             guard let image = UIImage(data: imageData) else { return }

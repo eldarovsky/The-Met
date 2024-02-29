@@ -20,9 +20,9 @@ protocol RandomArtPresenterProtocol {
 
 final class RandomArtPresenter {
     weak var view: RandomArtViewControllerProtocol?
-    let router: RandomArtRouterProtocol
+    private let router: RandomArtRouterProtocol
     private let networkManager = NetworkManager.shared
-    var imageIDs: [Int]
+    private var imageIDs: [Int]
     private var currentImage: Data?
     
     init(router: RandomArtRouterProtocol, imageIDs: [Int]) {

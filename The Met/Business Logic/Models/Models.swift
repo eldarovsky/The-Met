@@ -9,7 +9,7 @@ import Foundation
 
 struct Objects: Decodable {
     /// Массив id всех произведений
-    var objectIDs: [Int]
+    let objectIDs: [Int]
 }
 
 struct Object: Decodable {

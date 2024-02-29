@@ -17,7 +17,7 @@ protocol DepartmentsPresenterProtocol {
 
 final class DepartmentsPresenter {
     weak var view: DepartmentsViewControllerProtocol?
-    let router: DepartmentsRouterProtocol
+    private let router: DepartmentsRouterProtocol
 
     private let networkManager = NetworkManager.shared
     private var departments: [Department]?

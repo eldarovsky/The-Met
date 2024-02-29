@@ -14,7 +14,7 @@ protocol DepartmentsViewCellProtocol {
     func showBlankCell()
 }
 
-class DepartmentsViewCell: UITableViewCell {
+final class DepartmentsViewCell: UITableViewCell {
     private let departmentLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 17)

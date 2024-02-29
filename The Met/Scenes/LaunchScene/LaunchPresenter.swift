@@ -16,7 +16,7 @@ protocol LaunchPresenterProtocol {
 
 final class LaunchPresenter {
     weak var view: LaunchViewControllerProtocol?
-    let router: LaunchRouterProtocol
+    private let router: LaunchRouterProtocol
 
     // MARK: - Private properties
     private let networkManager = NetworkManager.shared
