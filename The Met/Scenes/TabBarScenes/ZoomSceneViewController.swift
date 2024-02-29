@@ -19,6 +19,7 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Private properties
     private let hapticFeedbackManager = HapticFeedbackManager.shared
+    private let alertManager = AlertManager.shared
     private var imageData: Data
     private var dataHashValue: Int = 0
     
@@ -45,27 +46,25 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
     @objc private func closeZoomScene() {
         dismiss(animated: true)
     }
-    
+
     @objc private func saveImage() {
         hapticFeedbackManager.enableFeedback()
-        
+
         if imageData.hashValue != dataHashValue {
             guard let image = UIImage(data: imageData) else { return }
-            
+
             let imageSaver = ImageSaverManager()
             imageSaver.writeToPhotoAlbum(image: image)
-            
+
             dataHashValue = imageData.hashValue
             UserDefaults.standard.set(dataHashValue, forKey: "dataHashValue")
+
+            alertManager.alertAction(fromVC: self, withTitle: "Image has been saved", andMessage: "", buttonTitle: "OK")
         } else {
-            let alert = UIAlertController(title: "This image has already been saved", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(action)
-            
-            present(alert, animated: true)
+            alertManager.alertAction(fromVC: self, withTitle: "Image has already been saved", andMessage: "", buttonTitle: "OK")
         }
     }
-    
+
     @objc private func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
         let scale = min(imageScrollView.maximumZoomScale, 2)
         let center = gesture.location(in: imageView)
