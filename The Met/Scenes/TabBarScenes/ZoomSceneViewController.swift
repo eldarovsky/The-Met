@@ -2,7 +2,8 @@
 //  ZoomSceneViewController.swift
 //  The Met
 //
-//  Created by Эльдар Абдуллин on 25.02.2024.
+//  Created by Eldar Abdullin on 25.02.2024.
+//  Copyright © 2024 Eldar Abdullin. All rights reserved.
 //
 
 import UIKit
@@ -57,7 +58,7 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
             dataHashValue = imageData.hashValue
             UserDefaults.standard.set(dataHashValue, forKey: "dataHashValue")
         } else {
-            let alert = UIAlertController(title: "Already saved", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "This image has already been saved", message: nil, preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default)
             alert.addAction(action)
 
