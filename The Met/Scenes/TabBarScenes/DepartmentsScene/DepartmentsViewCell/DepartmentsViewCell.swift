@@ -17,14 +17,13 @@ protocol DepartmentsViewCellProtocol {
 class DepartmentsViewCell: UITableViewCell {
     private let departmentLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.textColor = .white
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 17)
         label.clipsToBounds = true
         label.layer.cornerRadius = 12
         label.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textAlignment = .center
         label.backgroundColor = UIColor.black.withAlphaComponent(0.5)
 
         return label

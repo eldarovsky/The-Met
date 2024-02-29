@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 // MARK: - RandomArtViewControllerProtocol
 protocol RandomArtViewControllerProtocol: AnyObject {
@@ -18,7 +19,8 @@ protocol RandomArtViewControllerProtocol: AnyObject {
 final class RandomArtViewController: UIViewController {
     var presenter: RandomArtPresenterProtocol?
 
-    let tapGesture = UITapGestureRecognizer()
+    private let tapGesture = UITapGestureRecognizer()
+    private let hapticFeedback = HapticFeedback.shared
 
     // MARK: - UI elements
     private let canvas = UIImageView()
@@ -51,6 +53,7 @@ final class RandomArtViewController: UIViewController {
     }
 
     @objc private func getArt() {
+        hapticFeedback.enableFeedback()
         presenter?.fetchObject()
     }
 

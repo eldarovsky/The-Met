@@ -17,6 +17,7 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
     private var imageView = UIImageView()
 
     // MARK: - Private properties
+    private let hapticFeedback = HapticFeedback.shared
     private var imageData: Data
     private var dataHashValue: Int = 0
 
@@ -45,6 +46,8 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
     }
 
     @objc private func saveImage() {
+        hapticFeedback.enableFeedback()
+
         if imageData.hashValue != dataHashValue {
             guard let image = UIImage(data: imageData) else { return }
 

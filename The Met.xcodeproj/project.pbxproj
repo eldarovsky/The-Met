@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B86B8DDE2B84A86E007D372D /* DepartmentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86B8DDD2B84A86E007D372D /* DepartmentsViewCell.swift */; };
+		B86E63D22B8FB4B700452379 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E63D12B8FB4B700452379 /* HapticFeedback.swift */; };
 		B882A8292B45A15C0073078B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882A8252B45A15C0073078B /* TabBar.swift */; };
 		B882A82E2B45C9C10073078B /* LaunchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882A82C2B45C9C10073078B /* LaunchPresenter.swift */; };
 		B882A82F2B45C9C10073078B /* LaunchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882A82D2B45C9C10073078B /* LaunchRouter.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		B86B8DDD2B84A86E007D372D /* DepartmentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsViewCell.swift; sourceTree = "<group>"; };
+		B86E63D12B8FB4B700452379 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		B882A8252B45A15C0073078B /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		B882A82C2B45C9C10073078B /* LaunchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchPresenter.swift; sourceTree = "<group>"; };
 		B882A82D2B45C9C10073078B /* LaunchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchRouter.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				B8B644C72B42981000EABD97 /* Models */,
 				B8B644CB2B429C7E00EABD97 /* NetworkManager.swift */,
 				B8B644CD2B429CC900EABD97 /* ImageSaver.swift */,
+				B86E63D12B8FB4B700452379 /* HapticFeedback.swift */,
 			);
 			path = "Business Logic";
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				B8B644EA2B43121F00EABD97 /* RandomArtRouter.swift in Sources */,
 				B8B644D22B429EF800EABD97 /* CustomButton.swift in Sources */,
 				B8B644DE2B42F04B00EABD97 /* LaunchAssembler.swift in Sources */,
+				B86E63D22B8FB4B700452379 /* HapticFeedback.swift in Sources */,
 				B8C99A3C2B8B163F00A578FB /* ZoomSceneViewController.swift in Sources */,
 				B8B644B22B428F2100EABD97 /* AppDelegate.swift in Sources */,
 				B882A82F2B45C9C10073078B /* LaunchRouter.swift in Sources */,

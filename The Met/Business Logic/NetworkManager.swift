@@ -22,21 +22,8 @@ enum NetworkError: Error {
     case noInternetConnection
 }
 
-// MARK: - Network Manager Protocol
-protocol NetworkManagerProtocol {
-    func fetchObjects<T: Decodable>(_ type: T.Type, from url: String, timeoutInterval: TimeInterval, completion: @escaping(Result<T, NetworkError>) -> Void)
-    func fetchImage(from url: String, timeoutInterval: TimeInterval, completion: @escaping (Result<Data, NetworkError>) -> Void)
-    func alertAction(
-        fromVC viewController: UIViewController?,
-        withTitle title: String?,
-        andMessage message: String?,
-        buttonTitle: String?,
-        completion: (() -> Void)?
-    )
-}
-
 // MARK: - Network Manager
-final class NetworkManager: NetworkManagerProtocol {
+final class NetworkManager {
 
     // MARK: - Static Property (singletone pattern)
     static let shared = NetworkManager()
