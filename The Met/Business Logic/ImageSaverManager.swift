@@ -10,12 +10,12 @@ import UIKit
 
 // MARK: - ImageSaverManager
 final class ImageSaverManager: NSObject {
-
+    
     // MARK: - Public Methods
     func writeToPhotoAlbum(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompleted), nil)
     }
-
+    
     // MARK: - Private Methods
     @objc private func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
     }

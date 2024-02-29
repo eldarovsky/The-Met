@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: - Color Swatch
+// MARK: - Custom colors
 extension UIColor {
     static let customRed = UIColor(red: 236/255, green: 1/255, blue: 42/255, alpha: 1)
     static let customGray = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)

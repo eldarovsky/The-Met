@@ -8,11 +8,13 @@
 
 import Foundation
 
+// MARK: - Objects model
 struct Objects: Decodable {
     /// Массив id всех произведений
     let objectIDs: [Int]
 }
 
+// MARK: - Object model
 struct Object: Decodable {
     /// id  произведения
     let objectID: Int
@@ -30,24 +32,26 @@ struct Object: Decodable {
     let objectDate: String
     /// материал произведения
     let medium: String
-
+    
     /// сводная информация по произведению
     var description: String {
         """
         AUTHOR: \(artistDisplayName != "" ? artistDisplayName : "Unknown")
         TITLE: \"\(title != "" ? title : "\"Unknown\"")\"
-
+        
         DATE: \(objectDate != "" ? objectDate : "Unknown")
         MATERIALS: \(medium != "" ? medium : "Unknown")
         """
     }
 }
 
+// MARK: - Departments model
 struct Departments: Decodable {
     /// номера департаментов
     let departments: [Department]
 }
 
+// MARK: - Department model
 struct Department: Decodable {
     /// id департамента
     let departmentId: Int

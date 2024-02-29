@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Custom Button
 final class CustomButton: UIButton {
     init(
         title: String,
@@ -20,7 +21,7 @@ final class CustomButton: UIButton {
         height: CGFloat
     ) {
         super.init(frame: .zero)
-
+        
         setupButton(
             title: title,
             titleNormalColor: titleNormalColor,

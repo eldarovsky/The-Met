@@ -14,34 +14,41 @@ struct RandomArtModel {
     let description: String
 }
 
+// MARK: - RandomArtPresenterProtocol
 protocol RandomArtPresenterProtocol {
     func fetchObject()
     func zoomArt()
 }
 
+// MARK: - RandomArtPresenter
 final class RandomArtPresenter {
-
+    
+    // MARK: - Public properties
     weak var view: RandomArtViewControllerProtocol?
+    
+    // MARK: - Private properties
     private let router: RandomArtRouterProtocol
     
     private let networkManager = NetworkManager.shared
     private let alertManager = AlertManager.shared
     private var imageIDs: [Int]
     private var currentImage: Data?
-
+    
+    // MARK: - Initializer
     init(router: RandomArtRouterProtocol, imageIDs: [Int]) {
         self.router = router
         self.imageIDs = imageIDs
     }
 }
 
+// MARK: - RandomArtPresenter protocol extension
 extension RandomArtPresenter: RandomArtPresenterProtocol {
     private func getImageURL() -> String {
         let objectsURL = Link.baseURL
         let imageURL = String(imageIDs.randomElement() ?? 168777)
         return "\(objectsURL)/\(imageURL)"
     }
-
+    
     func fetchObject() {
         let url = getImageURL()
         

@@ -8,20 +8,22 @@
 
 import UIKit
 
+// MARK: - DepartmentsAssembler
 final class DepartmentsAssembler {
     private let navigationController: UINavigationController
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
 }
 
+// MARK: - DepartmentsAssembler extension
 extension DepartmentsAssembler: BaseAssembler {
     func configure(viewController: UIViewController) {
         let router = DepartmentsRouter(navigationController: navigationController)
         let presenter = DepartmentsPresenter(router: router)
         guard let departmentsVC = viewController as? DepartmentsViewController else { return }
-
+        
         presenter.view = departmentsVC
         departmentsVC.presenter = presenter
     }

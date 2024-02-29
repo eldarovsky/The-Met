@@ -7,11 +7,16 @@
 
 import UIKit
 
+// MARK: - AlertManager
 final class AlertManager {
+    
+    // MARK: - Static Property (singleton pattern)
     static let shared = AlertManager()
-
+    
+    // MARK: - Private Initializer (singleton pattern)
     private init() {}
-
+    
+    // MARK: - Public Methods
     func alertAction(
         fromVC viewController: UIViewController? = nil,
         withTitle title: String? = "You are offline",
@@ -24,7 +29,7 @@ final class AlertManager {
             completion?()
         }
         alert.addAction(action)
-
+        
         guard let viewController = viewController else { return }
         viewController.present(alert, animated: true)
     }

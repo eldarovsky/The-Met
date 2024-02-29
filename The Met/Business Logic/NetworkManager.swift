@@ -25,13 +25,13 @@ enum NetworkError: Error {
 
 // MARK: - Network Manager
 final class NetworkManager {
-
+    
     // MARK: - Static Property (singleton pattern)
     static let shared = NetworkManager()
-
-    // MARK: - Private Initialiser (singleton pattern)
+    
+    // MARK: - Private Initializer (singleton pattern)
     private init() {}
-
+    
     // MARK: - Public Methods
     func fetchObjects<T: Decodable>(
         _ type: T.Type,
@@ -43,22 +43,22 @@ final class NetworkManager {
             completion(.failure(.invalidURL))
             return
         }
-
+        
         var request = URLRequest(url: url)
         request.timeoutInterval = timeoutInterval
-
+        
         URLSession.shared.dataTask(with: request) { data, _, error in
             guard let objectsData = data else {
                 completion(.failure(.noData))
                 print(error?.localizedDescription ?? "No error description")
                 return
             }
-
+            
             let decoder = JSONDecoder()
-
+            
             do {
                 let typeData = try decoder.decode(T.self, from: objectsData)
-
+                
                 DispatchQueue.main.async {
                     completion(.success(typeData))
                 }
@@ -68,7 +68,7 @@ final class NetworkManager {
             }
         }.resume()
     }
-
+    
     func fetchImage(
         from url: String,
         timeoutInterval: TimeInterval = 10,
@@ -78,16 +78,16 @@ final class NetworkManager {
             completion(.failure(.invalidURL))
             return
         }
-
+        
         var request = URLRequest(url: imageURL)
         request.timeoutInterval = timeoutInterval
-
+        
         URLSession.shared.dataTask(with: request) { data, _, error in
             guard let imageData = data else {
                 completion(.failure(.noData))
                 return
             }
-
+            
             DispatchQueue.main.async {
                 completion(.success(imageData))
             }

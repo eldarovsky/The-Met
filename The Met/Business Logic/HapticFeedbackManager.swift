@@ -8,11 +8,16 @@
 
 import UIKit
 
+// MARK: - HapticFeedbackManager
 final class HapticFeedbackManager {
+    
+    // MARK: - Static Property (singleton pattern)
     static let shared = HapticFeedbackManager()
-
+    
+    // MARK: - Private Initializer (singleton pattern)
     private init() {}
-
+    
+    // MARK: - Public Methods
     func enableFeedback() {
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
