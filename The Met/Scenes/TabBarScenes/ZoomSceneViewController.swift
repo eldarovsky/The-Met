@@ -123,10 +123,10 @@ private extension ZoomSceneViewController {
     func setupUI() {
         view.backgroundColor = .tertiarySystemGroupedBackground
         
-        closeButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        
-        saveButton.setImage(UIImage(systemName: "arrow.down"), for: .normal)
-        
+        closeButton.setImage(UIImage(systemName: Symbols.close), for: .normal)
+
+        saveButton.setImage(UIImage(systemName: Symbols.save), for: .normal)
+
         imageScrollView.delegate = self
         imageScrollView.showsVerticalScrollIndicator = false
         imageScrollView.showsHorizontalScrollIndicator = false

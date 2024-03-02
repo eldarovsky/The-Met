@@ -49,11 +49,11 @@ extension LaunchRouter: LaunchRouterProtocol {
             tabBarController.viewControllers = [randomArtNavigationController, departmentsNavigationController]
             
             tabBarController.tabBar.items?.first?.title = "Random"
-            tabBarController.tabBar.items?.first?.image = UIImage(systemName: "photo")
-            
+            tabBarController.tabBar.items?.first?.image = UIImage(systemName: Symbols.random)
+
             tabBarController.tabBar.items?.last?.title = "Departments"
-            tabBarController.tabBar.items?.last?.image = UIImage(systemName: "photo.stack")
-            
+            tabBarController.tabBar.items?.last?.image = UIImage(systemName: Symbols.departments)
+
             tabBarController.modalPresentationStyle = .fullScreen
             navigationController.present(tabBarController, animated: true)
         }

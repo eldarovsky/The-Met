@@ -33,6 +33,7 @@
 		B8B841E62B81F9B7006A5317 /* DepartmentsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B841E52B81F9B7006A5317 /* DepartmentsAssembler.swift */; };
 		B8B841E82B81F9D1006A5317 /* DepartmentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B841E72B81F9D1006A5317 /* DepartmentsPresenter.swift */; };
 		B8B841EA2B81F9DE006A5317 /* DepartmentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B841E92B81F9DE006A5317 /* DepartmentsRouter.swift */; };
+		B8C4B0F12B937B680044879C /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4B0F02B937B680044879C /* Symbols.swift */; };
 		B8C99A3C2B8B163F00A578FB /* ZoomSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C99A3B2B8B163F00A578FB /* ZoomSceneViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		B8B841E52B81F9B7006A5317 /* DepartmentsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsAssembler.swift; sourceTree = "<group>"; };
 		B8B841E72B81F9D1006A5317 /* DepartmentsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsPresenter.swift; sourceTree = "<group>"; };
 		B8B841E92B81F9DE006A5317 /* DepartmentsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsRouter.swift; sourceTree = "<group>"; };
+		B8C4B0F02B937B680044879C /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		B8C99A3B2B8B163F00A578FB /* ZoomSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomSceneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 			children = (
 				B8B644BA2B428F2200EABD97 /* Assets.xcassets */,
 				B8B644D32B429F3800EABD97 /* ColorPalette.swift */,
+				B8C4B0F02B937B680044879C /* Symbols.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				B8B644D22B429EF800EABD97 /* CustomButton.swift in Sources */,
 				B8B644DE2B42F04B00EABD97 /* LaunchAssembler.swift in Sources */,
 				B828E4552B90D6030045BF80 /* AlertManager.swift in Sources */,
+				B8C4B0F12B937B680044879C /* Symbols.swift in Sources */,
 				B86E63D22B8FB4B700452379 /* HapticFeedbackManager.swift in Sources */,
 				B8C99A3C2B8B163F00A578FB /* ZoomSceneViewController.swift in Sources */,
 				B8B644B22B428F2100EABD97 /* AppDelegate.swift in Sources */,
