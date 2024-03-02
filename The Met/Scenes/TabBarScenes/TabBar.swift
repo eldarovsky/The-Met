@@ -18,6 +18,7 @@ final class TabBar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
+        delegate = self
     }
 }
 
@@ -28,9 +29,6 @@ private extension TabBar {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithOpaqueBackground()
         tabBarAppearance.backgroundColor = .customGreen
-        
-        tabBar.items?[0].image = UIImage(systemName: "photo")
-        tabBar.items?[1].image = UIImage(systemName: "photo.stack")
         
         let tabBarItemAppearance = UITabBarItemAppearance()
         
@@ -50,5 +48,37 @@ private extension TabBar {
         tabBarAppearance.stackedLayoutAppearance = tabBarItemAppearance
         tabBar.standardAppearance = tabBarAppearance
         tabBar.scrollEdgeAppearance = tabBarAppearance
+    }
+}
+
+// MARK: - UITabBarControllerDelegate
+extension TabBar: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+
+        guard let selectedTabIndex = tabBarController.viewControllers?.firstIndex(of: viewController),
+              let selectedTabBarItem = tabBar.items?[safe: selectedTabIndex] else {
+            return
+        }
+
+        if let tabItemView = selectedTabBarItem.value(forKey: "view") as? UIView,
+           let imageView = tabItemView.subviews.compactMap({ $0 as? UIImageView }).first {
+            animate(imageView: imageView)
+        }
+    }
+
+    private func animate(imageView: UIImageView) {
+        UIView.animate(withDuration: 0.1, animations: {
+            imageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }) { _ in
+            UIView.animate(withDuration: 0.1) {
+                imageView.transform = .identity
+            }
+        }
+    }
+}
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
     }
 }
