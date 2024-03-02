@@ -2,7 +2,8 @@
 //  AlertManager.swift
 //  The Met
 //
-//  Created by Эльдар Абдуллин on 29.02.2024.
+//  Created by Eldar Abdullin on 29.02.2024.
+//  Copyright © 2024 Eldar Abdullin. All rights reserved.
 //
 
 import UIKit
