@@ -97,7 +97,6 @@ private extension RandomArtViewController {
     func setupScreen() {
         view.backgroundColor = .customGreenLight
         navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationItem.backButtonTitle = "Back"
     }
     
     func setupCanvas() {

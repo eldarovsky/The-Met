@@ -39,7 +39,6 @@ extension DepartmentsRouter: DepartmentsRouterProtocol {
             let randomArtAssembler = RandomArtAssembler(navigationController: navigationController, imageIDs: imageIDs)
             randomArtAssembler.configure(viewController: randomArtVC)
             
-            randomArtVC.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
             navigationController.pushViewController(randomArtVC, animated: true)
         }
     }
