@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80C55AB2B9F1E46007F13F3 /* SearchAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C55AA2B9F1E46007F13F3 /* SearchAssembler.swift */; };
+		B80C55AD2B9F1E61007F13F3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C55AC2B9F1E61007F13F3 /* SearchViewController.swift */; };
+		B80C55AF2B9F1E75007F13F3 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C55AE2B9F1E75007F13F3 /* SearchPresenter.swift */; };
+		B80C55B12B9F1E8E007F13F3 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C55B02B9F1E8E007F13F3 /* SearchRouter.swift */; };
 		B828E4552B90D6030045BF80 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828E4542B90D6030045BF80 /* AlertManager.swift */; };
+		B85253BE2BA0A1E1008B4D8A /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85253BD2BA0A1E1008B4D8A /* SearchViewCell.swift */; };
 		B86B8DDE2B84A86E007D372D /* DepartmentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86B8DDD2B84A86E007D372D /* DepartmentsViewCell.swift */; };
 		B86E63D22B8FB4B700452379 /* HapticFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E63D12B8FB4B700452379 /* HapticFeedbackManager.swift */; };
 		B882A8292B45A15C0073078B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882A8252B45A15C0073078B /* TabBar.swift */; };
@@ -38,7 +43,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B80C55AA2B9F1E46007F13F3 /* SearchAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembler.swift; sourceTree = "<group>"; };
+		B80C55AC2B9F1E61007F13F3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B80C55AE2B9F1E75007F13F3 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		B80C55B02B9F1E8E007F13F3 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		B828E4542B90D6030045BF80 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		B85253BD2BA0A1E1008B4D8A /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
 		B86B8DDD2B84A86E007D372D /* DepartmentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsViewCell.swift; sourceTree = "<group>"; };
 		B86E63D12B8FB4B700452379 /* HapticFeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackManager.swift; sourceTree = "<group>"; };
 		B882A8252B45A15C0073078B /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -81,6 +91,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B80C55A92B9F1E19007F13F3 /* SearchScene */ = {
+			isa = PBXGroup;
+			children = (
+				B85253BC2BA0A1D1008B4D8A /* SearchViewCell */,
+				B80C55AA2B9F1E46007F13F3 /* SearchAssembler.swift */,
+				B80C55AC2B9F1E61007F13F3 /* SearchViewController.swift */,
+				B80C55AE2B9F1E75007F13F3 /* SearchPresenter.swift */,
+				B80C55B02B9F1E8E007F13F3 /* SearchRouter.swift */,
+			);
+			path = SearchScene;
+			sourceTree = "<group>";
+		};
+		B85253BC2BA0A1D1008B4D8A /* SearchViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B85253BD2BA0A1E1008B4D8A /* SearchViewCell.swift */,
+			);
+			path = SearchViewCell;
+			sourceTree = "<group>";
+		};
 		B86B8DDF2B84A876007D372D /* DepartmentsViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +125,7 @@
 				B882A8252B45A15C0073078B /* TabBar.swift */,
 				B8B644DC2B42F01700EABD97 /* RandomArtScene */,
 				B882A82B2B45C9680073078B /* DepartmentsScene */,
+				B80C55A92B9F1E19007F13F3 /* SearchScene */,
 				B8C99A3B2B8B163F00A578FB /* ZoomSceneViewController.swift */,
 			);
 			path = TabBarScenes;
@@ -299,16 +330,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80C55AF2B9F1E75007F13F3 /* SearchPresenter.swift in Sources */,
 				B86B8DDE2B84A86E007D372D /* DepartmentsViewCell.swift in Sources */,
 				B882A8312B45CCB30073078B /* DepartmentsViewController.swift in Sources */,
 				B8B644CC2B429C7E00EABD97 /* NetworkManager.swift in Sources */,
+				B85253BE2BA0A1E1008B4D8A /* SearchViewCell.swift in Sources */,
 				B8B644D42B429F3800EABD97 /* ColorPalette.swift in Sources */,
 				B882A8292B45A15C0073078B /* TabBar.swift in Sources */,
+				B80C55B12B9F1E8E007F13F3 /* SearchRouter.swift in Sources */,
 				B8B644DA2B42EF7E00EABD97 /* MVPProtocol.swift in Sources */,
 				B8B841EA2B81F9DE006A5317 /* DepartmentsRouter.swift in Sources */,
 				B8B644B62B428F2100EABD97 /* LaunchViewController.swift in Sources */,
 				B8B644CE2B429CC900EABD97 /* ImageSaverManager.swift in Sources */,
 				B8B644E82B43121700EABD97 /* RandomArtPresenter.swift in Sources */,
+				B80C55AB2B9F1E46007F13F3 /* SearchAssembler.swift in Sources */,
 				B882A82E2B45C9C10073078B /* LaunchPresenter.swift in Sources */,
 				B8B644D02B429CF500EABD97 /* Models.swift in Sources */,
 				B8B644E62B43120800EABD97 /* RandomArtViewController.swift in Sources */,
@@ -320,6 +355,7 @@
 				B8C4B0F12B937B680044879C /* Symbols.swift in Sources */,
 				B86E63D22B8FB4B700452379 /* HapticFeedbackManager.swift in Sources */,
 				B8C99A3C2B8B163F00A578FB /* ZoomSceneViewController.swift in Sources */,
+				B80C55AD2B9F1E61007F13F3 /* SearchViewController.swift in Sources */,
 				B8B644B22B428F2100EABD97 /* AppDelegate.swift in Sources */,
 				B882A82F2B45C9C10073078B /* LaunchRouter.swift in Sources */,
 				B8B841E62B81F9B7006A5317 /* DepartmentsAssembler.swift in Sources */,

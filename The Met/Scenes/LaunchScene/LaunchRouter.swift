@@ -44,15 +44,27 @@ extension LaunchRouter: LaunchRouterProtocol {
             let departmentsNavigationController = UINavigationController(rootViewController: departmentsVC)
             let departmentsAssembler = DepartmentsAssembler(navigationController: departmentsNavigationController)
             departmentsAssembler.configure(viewController: departmentsVC)
-            
-            let tabBarController = TabBar()
-            tabBarController.viewControllers = [randomArtNavigationController, departmentsNavigationController]
-            
-            tabBarController.tabBar.items?.first?.title = "Random"
-            tabBarController.tabBar.items?.first?.image = UIImage(systemName: Symbols.random)
 
-            tabBarController.tabBar.items?.last?.title = "Departments"
-            tabBarController.tabBar.items?.last?.image = UIImage(systemName: Symbols.departments)
+            let searchVC = SearchViewController()
+            let searchNavigationController = UINavigationController(rootViewController: searchVC)
+            let searchAssembler = SearchAssembler(navigationController: searchNavigationController)
+            searchAssembler.configure(viewController: searchVC)
+
+            let tabBarController = TabBar()
+            tabBarController.viewControllers = [
+                randomArtNavigationController,
+                departmentsNavigationController, 
+                searchNavigationController
+            ]
+
+            tabBarController.tabBar.items?[0].title = "Random"
+            tabBarController.tabBar.items?[0].image = UIImage(systemName: Symbols.random)
+
+            tabBarController.tabBar.items?[1].title = "Departments"
+            tabBarController.tabBar.items?[1].image = UIImage(systemName: Symbols.departments)
+
+            tabBarController.tabBar.items?[2].title = "Search"
+            tabBarController.tabBar.items?[2].image = UIImage(systemName: Symbols.search)
 
             tabBarController.modalPresentationStyle = .fullScreen
             navigationController.present(tabBarController, animated: true)

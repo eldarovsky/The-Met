@@ -45,7 +45,7 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
         networkManager.fetchObjects(Departments.self, from: Link.departmentsURL) { [weak self] result in
             switch result {
             case .success(let departments):
-                self?.departments = departments.departments
+//                self?.departments = departments.departments
                 self?.view?.render(departments: departments.departments)
             case .failure(let error):
                 print(error.localizedDescription)

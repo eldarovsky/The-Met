@@ -13,6 +13,7 @@ enum Link {
     static let baseURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
     static let departmentsURL = "https://collectionapi.metmuseum.org/public/collection/v1/departments"
     static let departmentURL = "https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds="
+    static let searchURL = "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&title=true&q="
 }
 
 // MARK: - Error types

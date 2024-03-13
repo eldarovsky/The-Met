@@ -11,6 +11,7 @@ import Foundation
 struct Symbols {
     static let random: String = "photo"
     static let departments: String = "photo.stack"
+    static let search: String = "magnifyingglass"
     static let close: String = "xmark"
     static let save: String = "arrow.down"
 }

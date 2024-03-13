@@ -90,6 +90,7 @@ private extension DepartmentsViewController {
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
         
         title = "Departments"
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .customGray
     }
