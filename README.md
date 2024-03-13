@@ -21,7 +21,7 @@
 - Medieval Art
 - Musical Instruments
 - Photographs
-- Modern Art ('mostly in PD')
+- Modern Art (mostly in PD)
 
 ![](https://github.com/eldarovsky/The-Met/blob/main/images/Image_01.png)
 ![](https://github.com/eldarovsky/The-Met/blob/main/images/Image_02.png)
