@@ -1,2 +1,2 @@
-![Logo](https://psv4.userapi.com/c909228/u343013874/docs/d33/288780ab0989/1.png?extra=zuLtnOn2LNlM1JDnqyYXhnbnTOIUtJfYCzkM6u-s-4SsU94cEyKle2cDfLtrg5e-1_ekUq9tkO4U71GYVxUN5pbg7F78hAp5fn53x3Rw_JIxLJamq4p7h_m0CryozmMBveHX24KJY9FPGSPS4BSGkrMf "The Met")
-![Logo](https://psv4.userapi.com/c909328/u343013874/docs/d8/22e7eafd50e7/2.png?extra=mrQCQA1Tf8rvKbDyyXi4nsipRXJuxumosqN5qNa7syt8w91JNv7k1LH04oZkuJINEHBDAOkCuu2VObzJZr1xBP1nZU6T9ZseM_Xf7UZGm5ifRu5-eoNqCTMoPyP_llM3Pp0A5aeP7eAg-FrLoIgictnv "The Met")
+![](https://github.com/eldarovsky/The-Met/blob/main/images/Image_01.png)
+![](https://github.com/eldarovsky/The-Met/blob/main/images/Image_02.png)
