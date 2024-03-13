@@ -28,7 +28,6 @@ final class DepartmentsPresenter {
     
     private let networkManager = NetworkManager.shared
     private let alertManager = AlertManager.shared
-    private var departments: [Department]?
     private var departmentURL = ""
     private var objectIDs: [Int]?
     private var isParsing = false
@@ -45,7 +44,6 @@ extension DepartmentsPresenter: DepartmentsPresenterProtocol {
         networkManager.fetchObjects(Departments.self, from: Link.departmentsURL) { [weak self] result in
             switch result {
             case .success(let departments):
-//                self?.departments = departments.departments
                 self?.view?.render(departments: departments.departments)
             case .failure(let error):
                 print(error.localizedDescription)

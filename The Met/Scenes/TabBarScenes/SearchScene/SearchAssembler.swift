@@ -10,7 +10,7 @@ import UIKit
 // MARK: - SearchAssembler
 final class SearchAssembler {
     private let navigationController: UINavigationController
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -22,7 +22,7 @@ extension SearchAssembler: BaseAssembler {
         let router = SearchRouter(navigationController: navigationController)
         let presenter = SearchPresenter(router: router)
         guard let searchVC = viewController as? SearchViewController else { return }
-
+        
         presenter.view = searchVC
         searchVC.presenter = presenter
     }

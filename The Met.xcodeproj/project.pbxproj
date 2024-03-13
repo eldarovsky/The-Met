@@ -12,7 +12,6 @@
 		B80C55AF2B9F1E75007F13F3 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C55AE2B9F1E75007F13F3 /* SearchPresenter.swift */; };
 		B80C55B12B9F1E8E007F13F3 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80C55B02B9F1E8E007F13F3 /* SearchRouter.swift */; };
 		B828E4552B90D6030045BF80 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B828E4542B90D6030045BF80 /* AlertManager.swift */; };
-		B85253BE2BA0A1E1008B4D8A /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85253BD2BA0A1E1008B4D8A /* SearchViewCell.swift */; };
 		B86B8DDE2B84A86E007D372D /* DepartmentsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86B8DDD2B84A86E007D372D /* DepartmentsViewCell.swift */; };
 		B86E63D22B8FB4B700452379 /* HapticFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E63D12B8FB4B700452379 /* HapticFeedbackManager.swift */; };
 		B882A8292B45A15C0073078B /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B882A8252B45A15C0073078B /* TabBar.swift */; };
@@ -48,7 +47,6 @@
 		B80C55AE2B9F1E75007F13F3 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		B80C55B02B9F1E8E007F13F3 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		B828E4542B90D6030045BF80 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
-		B85253BD2BA0A1E1008B4D8A /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
 		B86B8DDD2B84A86E007D372D /* DepartmentsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentsViewCell.swift; sourceTree = "<group>"; };
 		B86E63D12B8FB4B700452379 /* HapticFeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackManager.swift; sourceTree = "<group>"; };
 		B882A8252B45A15C0073078B /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -94,21 +92,12 @@
 		B80C55A92B9F1E19007F13F3 /* SearchScene */ = {
 			isa = PBXGroup;
 			children = (
-				B85253BC2BA0A1D1008B4D8A /* SearchViewCell */,
 				B80C55AA2B9F1E46007F13F3 /* SearchAssembler.swift */,
 				B80C55AC2B9F1E61007F13F3 /* SearchViewController.swift */,
 				B80C55AE2B9F1E75007F13F3 /* SearchPresenter.swift */,
 				B80C55B02B9F1E8E007F13F3 /* SearchRouter.swift */,
 			);
 			path = SearchScene;
-			sourceTree = "<group>";
-		};
-		B85253BC2BA0A1D1008B4D8A /* SearchViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				B85253BD2BA0A1E1008B4D8A /* SearchViewCell.swift */,
-			);
-			path = SearchViewCell;
 			sourceTree = "<group>";
 		};
 		B86B8DDF2B84A876007D372D /* DepartmentsViewCell */ = {
@@ -334,7 +323,6 @@
 				B86B8DDE2B84A86E007D372D /* DepartmentsViewCell.swift in Sources */,
 				B882A8312B45CCB30073078B /* DepartmentsViewController.swift in Sources */,
 				B8B644CC2B429C7E00EABD97 /* NetworkManager.swift in Sources */,
-				B85253BE2BA0A1E1008B4D8A /* SearchViewCell.swift in Sources */,
 				B8B644D42B429F3800EABD97 /* ColorPalette.swift in Sources */,
 				B882A8292B45A15C0073078B /* TabBar.swift in Sources */,
 				B80C55B12B9F1E8E007F13F3 /* SearchRouter.swift in Sources */,

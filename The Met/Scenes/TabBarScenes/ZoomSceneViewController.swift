@@ -23,7 +23,7 @@ final class ZoomSceneViewController: UIViewController, UIScrollViewDelegate {
     private var imageData: Data
     private var dataHashValue: Int = 0
     
-    // MARK: - Overrided methods
+    // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
