@@ -1,6 +1,6 @@
 # The Met
 
-"The Met" is an app that provides access to more than 470.000 artworks from The Metropolitan Museum of Art that are in the [public domain (PD)](https://en.wikipedia.org/wiki/Public_domain).
+"The Met" is an app that provides access to more than 470.000 artworks from ["The Metropolitan Museum of Art"](https://www.metmuseum.org) that are in the [public domain (PD)](https://en.wikipedia.org/wiki/Public_domain).
 
 #
 **List of Departments:**
