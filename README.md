@@ -3,7 +3,7 @@
 "The Met" is an app that provides access to more than 470.000 artworks from The Metropolitan Museum of Art that are in the [public domain (PD)](https://en.wikipedia.org/wiki/Public_domain).
 
 #
-**Departments List:**
+**List of Departments:**
 - American Decorative Arts
 - Ancient Near Eastern Art
 - Arms and Armor
