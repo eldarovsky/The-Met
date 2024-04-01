@@ -25,6 +25,34 @@
 <li>Modern Art (mostly not in PD)</li>
 </details>
 
+<details>
+<summary><strong>INSTALLATION</strong></summary>
+
+1. **Clone this repository to your local machine:**
+
+    ```sh
+    https://github.com/eldarovsky/The-Met.git
+    ```
+    
+2. **Open the project in Xcode:**
+
+    - Launch Xcode.
+    - Select "Open" from the File menu.
+    - Navigate to the project folder and select the `.xcodeproj` file.
+    
+3. **Set the Active Scheme:**
+
+    - In Xcode's toolbar, select the target device or simulator you want to run the app on (preferred: iPhone 15 Pro, iOS 16.2).
+    
+4. **Build and Run the Project:**
+
+   - Click the "Run" button (▶) in Xcode's toolbar.
+   - The app will build and launch in the selected simulator or device.
+
+
+
+</details>
+
 <img src="https://github.com/eldarovsky/The-Met/blob/main/images/Image_01.png" alt="">
 <img src="https://github.com/eldarovsky/The-Met/blob/main/images/Image_02.png" alt="">
 
