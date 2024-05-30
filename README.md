@@ -1,6 +1,6 @@
 <h1 id="the-met">The Met</h1>
 
-<p>&quot;The Met&quot; is an app that provides access to more than 470.000 artworks from <a href="https://www.metmuseum.org">&quot;The Metropolitan Museum of Art&quot;</a> that are in the <a href="https://en.wikipedia.org/wiki/Public_domain">public domain</a>.</p>
+<p>An app that provides access to more than 470.000 artworks from <a href="https://www.metmuseum.org">&quot;The Metropolitan Museum of Art&quot;</a> that are in the <a href="https://en.wikipedia.org/wiki/Public_domain">public domain</a>.</p>
 
 <details>
 <summary><strong>LIST OF DEPARTMENTS</strong></summary>
